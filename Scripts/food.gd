@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Food
 # default amount used to charge portal
-var portalFuelmount:int = 500
+var portalFuelmount:int = 5
 var isEaten = false
 var finalPosition:Vector2 = Vector2.ZERO
 @export var duration: float = .5
@@ -11,13 +11,14 @@ var finalPosition:Vector2 = Vector2.ZERO
 @onready var FoodSprite := $Sprite2D
 @onready var FoodOnEatCPU_Particle := $FoodEatenParticle
 
-const FOOD_SCALE_OFFSET := .4
+const FOOD_SCALE_OFFSET_UPPER := .4
+const FOOD_SCALE_OFFSET_LOWER := .1
 const FOOD_FUEL_MULT = 10
 const FOOD_ROTATION_MIN = 0
 const FOOD_ROTATION_MAX = 360
 
 func _ready() -> void:
-	var newScale = randf_range(-FOOD_SCALE_OFFSET,FOOD_SCALE_OFFSET)
+	var newScale = randf_range(-FOOD_SCALE_OFFSET_LOWER,FOOD_SCALE_OFFSET_UPPER)
 	scale.x += newScale
 	scale.y += newScale
 	portalFuelmount += snappedi(newScale * FOOD_FUEL_MULT, 1)

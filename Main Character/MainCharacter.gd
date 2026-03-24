@@ -89,6 +89,7 @@ func _stop_pulsing(resetScale:bool):
 func IncrementPortalSpawnPercent(amount):
 	emit_signal("PlayerAteFood")
 	portalSpawnPercent += amount
+	print_debug(portalSpawnPercent)
 	GameSfx.playPlayerAteFood()
 	# max portal amount cant exceed threshold
 	# once it exceeds spawn portal and keep exceeding amount

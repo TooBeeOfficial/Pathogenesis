@@ -5,15 +5,18 @@ var size:Vector2i
 var playerSpawnPosition = Vector2i(0,0)
 var foodSpawnLocations:Array[Vector2i] = []
 var enemySpawnerLocations:Array[Vector2i] = []
-
+var playableArea = 0
 signal FinishedPlacingTiles
 
 # used to reduce iterations for spawning stuff
 const MAP_LOWER_LIMIT = 3
 const MAP_UPPER_LIMIT = 97
-const MaxFoodSpawners = 20
+const MaxFoodSpawners = 40.0
+const MaxEnemySpawners = 20.0
+const ObjectPerArea = 3000.0
 
-func PlaceTiles():
+func PlaceTiles(newPlayableArea:int):
+	self.playableArea = newPlayableArea
 	var cells:Array[Vector2i] = []
 	var xCoordinate = 0
 	var yCoordinate = 0
@@ -37,6 +40,7 @@ func setPlayerSpawnLocation():
 	var usedCells:Array[Vector2i] = get_used_cells()
 	var tempX = 0
 	var tempY = 0
+	
 	while !isPlayerSpawnable:
 		if usedCells.find(playerSpawnPosition) != -1:
 			tempX = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
@@ -51,7 +55,9 @@ func setFoodSpawnerLocations():
 	var tempX = 0
 	var tempY = 0
 	var currentFoodIndex = 0
-	while MaxFoodSpawners != currentFoodIndex:
+	var foodPerArea = (MaxFoodSpawners/ObjectPerArea) * playableArea
+	print_debug(roundi(foodPerArea))
+	while roundi(foodPerArea) != currentFoodIndex:
 		if usedCells.find(foodLocation) != -1 and !foodSpawnLocations.has(foodLocation) and !enemySpawnerLocations.has(foodLocation):
 			tempX = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
 			tempY = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
@@ -68,7 +74,9 @@ func setEnemySpawnerLocations():
 	var tempX = 0
 	var tempY = 0
 	var currentFoodIndex = 0
-	while MaxFoodSpawners != currentFoodIndex:
+	var enemyPerArea = (MaxEnemySpawners/ObjectPerArea) * playableArea
+	print_debug(roundi(enemyPerArea))
+	while roundi(enemyPerArea) != currentFoodIndex:
 		if usedCells.find(enemySpawnerLocation) != -1 and !enemySpawnerLocations.has(enemySpawnerLocation) and !foodSpawnLocations.has(enemySpawnerLocation):
 			tempX = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
 			tempY = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)

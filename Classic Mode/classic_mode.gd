@@ -1,6 +1,6 @@
 extends Node
 
-@onready var obstacle_spawner: Node2D = $ObstacleSpawner
+@onready var obstacle_spawner = $ObstacleSpawner
 @onready var wall_tile_map = $WallTileMap
 var foodSpawner = preload("res://Scenes/FoodSpawner.tscn")
 
@@ -12,7 +12,7 @@ func _ready() -> void:
 func OnFinishNoise():
 	wall_tile_map.obstacleMap = obstacle_spawner.colors
 	wall_tile_map.size = obstacle_spawner.NoiseSize
-	wall_tile_map.PlaceTiles()
+	wall_tile_map.PlaceTiles(obstacle_spawner.getPlayableArea())
 
 func OnFinishWallPlacement():
 	var player = (get_tree().get_first_node_in_group("Player") as Player)

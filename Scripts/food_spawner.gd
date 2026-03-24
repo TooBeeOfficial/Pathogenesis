@@ -1,7 +1,6 @@
 extends StaticBody2D
 class_name FoodSpawner
 
-const _MaximumFoodSpawn = 10
 var currentFoodSpawned = 0
 
 # used for checking how much time has passed and if spawner needs to spawn food
@@ -16,9 +15,10 @@ var time_elapsed = 0
 @export var maxScale = 2.1
 
 @onready var foodSpawnerSprite := $Sprite2D
+const MAXIMUM_FOOD_SPAWN = 10
 const IMAGE_COLOR_MIN_VALUE = 40
 const IMAGE_COLOR_MAX_VALUE = 70
-const BASE_SACLE = 2
+const BASE_SCALE = 2
 
 @export var foodList:Array[Texture]
 
@@ -34,13 +34,13 @@ func ExtractFoodColor()->Color:
 
 func _process(delta: float) -> void:
 	time_elapsed += delta
-	scale = Vector2((lerpf(BASE_SACLE,minScale,time_elapsed) as float),(lerpf(BASE_SACLE,minScale,time_elapsed as float)))
-	if time_elapsed > 1 and _MaximumFoodSpawn != currentFoodSpawned:
+	scale = Vector2((lerpf(BASE_SCALE,minScale,time_elapsed) as float),(lerpf(BASE_SCALE,minScale,time_elapsed as float)))
+	if time_elapsed > 1 and MAXIMUM_FOOD_SPAWN != currentFoodSpawned:
 		# increment to check if spawner needs to be destroyed/freed
 		currentFoodSpawned += 1
 		# reset timer for every second to prevent from spawning food too early
 		time_elapsed = 0
-		scale = Vector2(lerpf(BASE_SACLE,maxScale,time_elapsed),lerpf(BASE_SACLE,maxScale,time_elapsed))
+		scale = Vector2(lerpf(BASE_SCALE,maxScale,time_elapsed),lerpf(BASE_SCALE,maxScale,time_elapsed))
 		# spawn food
 		var newFood = FoodScene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		var spawnPosition = Vector2(randi_range(SpawnRadius * -1 ,SpawnRadius),randi_range(SpawnRadius * -1,SpawnRadius))
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 		# adjust food color
 		(newFood as Food).foodColor = ExtractFoodColor()
 		(newFood as Food).UpdateColors()
-	if _MaximumFoodSpawn == currentFoodSpawned:
+	if MAXIMUM_FOOD_SPAWN == currentFoodSpawned:
 		# Destroy spawner
 		if self:
 			queue_free()

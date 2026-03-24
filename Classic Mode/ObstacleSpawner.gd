@@ -34,6 +34,7 @@ func GenerateAndClean():
 	CloseOutMap()
 	keep_biggest_island()
 	printColors()
+	getPlayableArea()
 
 func printColors():
 	var map = ""
@@ -53,7 +54,14 @@ func generateNoise():
 			else:
 				colors[i] = Color.WHITE
 			i += 1
-	pass
+
+func getPlayableArea():
+	var tempSize = 0
+	for cell in colors:
+		if cell == Color.BLACK:
+			tempSize += 1
+	print_debug(tempSize)
+	return tempSize
 
 func flood_fill(start: int) -> Array:
 	var stack = [start]
@@ -110,7 +118,3 @@ func CloseOutMap():
 		# First 2 columns or last 2 columns
 		if col < 2 or col >= width - 2:
 			colors[i] = Color.WHITE
-
-func setPlayerSpawnPoint():
-	
-	pass
