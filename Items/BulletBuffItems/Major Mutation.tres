@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DamageMultUpgrade" load_steps=3 format=3 uid="uid://cn1u163cp6dn0"]
+
+[ext_resource type="Texture2D" uid="uid://4g43eciopuri" path="res://Assets/Food/PNG/shadow/1.png" id="1_i7r7x"]
+[ext_resource type="Script" uid="uid://b7ep76hbjdruv" path="res://Items/BulletBuffItems/BuffScripts/BulletDamageMult1.gd" id="2_s0e35"]
+
+[resource]
+script = ExtResource("2_s0e35")
+DamageMult = 1.3
+ItemName = "Major Mutation"
+ItemDescription = "1.3x Damage Multiplier"
+ItemSprite = ExtResource("1_i7r7x")
+Rarity = 3
+metadata/_custom_type_script = "uid://chmafla78a05f"

@@ -1,0 +1,109 @@
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bdscallsxjydj"]
+
+[ext_resource type="FontFile" uid="uid://dh8l0yh11m03k" path="res://Assets/TrueType (.ttf)/FreeCheese-Regular.ttf" id="1_tgpcq"]
+[ext_resource type="Texture2D" uid="uid://csbesxp7c8f8r" path="res://Assets/GUI/Game UI Button.svg" id="2_y6kab"]
+[ext_resource type="Texture2D" uid="uid://dvoaqimplwjva" path="res://Assets/GUI/ButtonPressed.svg" id="3_0687e"]
+[ext_resource type="Texture2D" uid="uid://2x8osk65thob" path="res://Assets/GUI/HealthBar/ProgressBar.svg" id="4_thdio"]
+[ext_resource type="Texture2D" uid="uid://b4hqak6csoj5m" path="res://Assets/GUI/HealthBar/ProgressBarUnder (1).svg" id="5_ho106"]
+[ext_resource type="FontFile" uid="uid://b1qjl6xlitn1e" path="res://Assets/TrueType (.ttf)/FreeCheese-Italic.ttf" id="5_thdio"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_thdio"]
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ig8w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0687e"]
+texture = ExtResource("2_y6kab")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ho106"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ig8w"]
+texture = ExtResource("3_0687e")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_ho106"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_lur8w"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_5lpxp"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_onsta"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ho106"]
+texture = ExtResource("4_thdio")
+texture_margin_left = 10.0
+texture_margin_top = 1.0
+texture_margin_right = 10.0
+texture_margin_bottom = 1.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lur8w"]
+texture = ExtResource("5_ho106")
+texture_margin_left = 10.0
+texture_margin_top = 1.0
+texture_margin_right = 10.0
+texture_margin_bottom = 1.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[resource]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_tgpcq")
+Button/styles/disabled = SubResource("StyleBoxTexture_thdio")
+Button/styles/focus = SubResource("StyleBoxEmpty_3ig8w")
+Button/styles/hover = SubResource("StyleBoxTexture_0687e")
+Button/styles/normal = SubResource("StyleBoxEmpty_ho106")
+Button/styles/pressed = SubResource("StyleBoxTexture_3ig8w")
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+HSlider/icons/grabber = SubResource("Texture2DRD_ho106")
+HSlider/icons/grabber_disabled = SubResource("Texture2DRD_lur8w")
+HSlider/icons/grabber_highlight = SubResource("Texture2DRD_5lpxp")
+HSlider/icons/tick = SubResource("Texture2DRD_onsta")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_ho106")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_lur8w")
+HSlider/styles/slider = SubResource("StyleBoxTexture_lur8w")
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_tgpcq")
+LineEdit/fonts/font = ExtResource("1_tgpcq")
+MenuButton/fonts/font = ExtResource("5_thdio")
+OptionButton/fonts/font = ExtResource("5_thdio")
+TabBar/fonts/font = ExtResource("5_thdio")
+TextEdit/fonts/font = ExtResource("1_tgpcq")
+Tree/fonts/font = ExtResource("1_tgpcq")
+Tree/fonts/title_button_font = ExtResource("5_thdio")
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = null
+VScrollBar/styles/scroll_focus = null
+VSlider/styles/grabber_area = SubResource("StyleBoxTexture_ho106")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_ho106")
+VSlider/styles/slider = SubResource("StyleBoxTexture_ho106")

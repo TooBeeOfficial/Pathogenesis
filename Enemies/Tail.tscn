@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5rcuitq5pj1c"]
+
+[ext_resource type="Texture2D" uid="uid://bkg6y1nc2i4k2" path="res://Assets/Enemy/Untitled11_20250603034650.png" id="1_4jfbm"]
+[ext_resource type="Script" uid="uid://bftuq70pvo5r6" path="res://Scripts/tail.gd" id="1_o2vj7"]
+
+[sub_resource type="Curve" id="Curve_p7mxw"]
+_data = [Vector2(0, 1), 0.0, -0.0127284, 0, 0, Vector2(1, 0.6689054), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_o2vj7"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.662376, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Line2D" type="Line2D"]
+show_behind_parent = true
+texture_repeat = 3
+points = PackedVector2Array(0, -1, -146, 29, -213, -39, -228, 16)
+width = 20.0
+width_curve = SubResource("Curve_p7mxw")
+gradient = SubResource("Gradient_o2vj7")
+texture = ExtResource("1_4jfbm")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("1_o2vj7")

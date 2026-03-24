@@ -1,0 +1,237 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgb1ysxhuuvuw"]
+
+[ext_resource type="Theme" uid="uid://bdscallsxjydj" path="res://GUI/Themes/MainTheme.tres" id="1_xskdj"]
+[ext_resource type="Texture2D" uid="uid://dmcagxmfdbc34" path="res://Assets/GUI/MainMenu/MainMenuBG.svg" id="2_k4wbt"]
+[ext_resource type="Shader" uid="uid://ccje8c3ovlrww" path="res://Shaders/BackgroundWave.gdshader" id="2_kyyyq"]
+[ext_resource type="StyleBox" uid="uid://dcjbs4pvrdx7k" path="res://GUI/Themes/BuffItemHover.tres" id="3_kyyyq"]
+[ext_resource type="PackedScene" uid="uid://csbpmgpoe2nj5" path="res://GUI/button.tscn" id="4_j2b6q"]
+[ext_resource type="Texture2D" uid="uid://8jpa2ca6layk" path="res://Assets/Player/PlayerCharacter.svg" id="7_kyyyq"]
+[ext_resource type="Texture2D" uid="uid://by8mvsbngf8u3" path="res://Assets/Location/Location (1).svg" id="8_wdqet"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kyyyq"]
+texture = ExtResource("2_k4wbt")
+
+[sub_resource type="GDScript" id="GDScript_j2b6q"]
+script/source = "extends MainMenuButton
+
+var transitionScene := \"res://SceneManager/SceneTransitions/TransitionHandler.tscn\"
+
+signal NewGame(mainMenuVisible:bool)
+
+func _ready() -> void:
+	super._ready()
+
+func buttonPressed():
+	UiSfx.UI_Pressed()
+	var TransitionSceneResource = load(transitionScene).instantiate()
+	$\"../../../../../../..\".add_sibling(TransitionSceneResource)
+	(TransitionSceneResource as LoadingScreen).sceneAnimationPlayer.connect(\"animation_finished\",TransitionEnd)
+	(TransitionSceneResource as LoadingScreen).startSceneTransition(\"fade_in_black\")
+
+func TransitionEnd(_animationName:String):
+	NewGame.emit(false)
+
+func PlayHoverSound() -> void:
+	UiSfx.UI_Hover()
+"
+
+[sub_resource type="GDScript" id="GDScript_kyyyq"]
+script/source = "extends MainMenuButton
+
+@onready var ButtonForDisable := $MarginContainer/button
+
+func _ready() -> void:
+	super._ready()
+	ButtonForDisable.disabled = true
+
+func buttonPressed():
+	UiSfx.UI_Pressed()
+	# Continue Existing Game
+
+func PlayHoverSound() -> void:
+	UiSfx.UI_Hover()
+"
+
+[sub_resource type="GDScript" id="GDScript_k4wbt"]
+script/source = "extends MainMenuButton
+
+signal OpenOptions
+
+func _ready() -> void:
+	super._ready()
+
+func buttonPressed():
+	# implement Options
+	UiSfx.UI_Pressed()
+	OpenOptions.emit()
+
+func PlayHoverSound() -> void:
+	UiSfx.UI_Hover()
+"
+
+[sub_resource type="GDScript" id="GDScript_i54pe"]
+script/source = "extends MainMenuButton
+
+func _ready() -> void:
+	super._ready()
+
+func buttonPressed():
+	UiSfx.UI_Pressed()
+	get_tree().quit()
+
+func PlayHoverSound() -> void:
+	UiSfx.UI_Hover()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4y8ja"]
+shader = ExtResource("2_kyyyq")
+shader_parameter/wave_strength = 2.000000095
+shader_parameter/wave_frequency = 5.0000002375
+shader_parameter/wave_speed = 2.000000095
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xskdj")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kyyyq")
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer"]
+layout_mode = 2
+expand_mode = 5
+stretch_mode = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer/TextureRect"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1794.0
+offset_top = -579.0
+offset_right = -1481.0
+offset_bottom = 583.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_kyyyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/TextureRect/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="New Game Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+layout_mode = 2
+script = SubResource("GDScript_j2b6q")
+buttonName = "New Game"
+
+[node name="Continue Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+layout_mode = 2
+script = SubResource("GDScript_kyyyq")
+buttonName = "Continue"
+
+[node name="Options Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+layout_mode = 2
+script = SubResource("GDScript_k4wbt")
+buttonName = "Options"
+
+[node name="Quit Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+layout_mode = 2
+script = SubResource("GDScript_i54pe")
+buttonName = "Quit"
+
+[node name="Decorations" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftPortal" type="TextureRect" parent="Decorations"]
+process_mode = 3
+material = SubResource("ShaderMaterial_4y8ja")
+layout_mode = 1
+offset_left = 121.999985
+offset_top = 110.0
+offset_right = 249.99998
+offset_bottom = 238.0
+scale = Vector2(3.2728233, 3.2728233)
+texture = ExtResource("8_wdqet")
+stretch_mode = 4
+
+[node name="RightTopPortal" type="TextureRect" parent="Decorations"]
+material = SubResource("ShaderMaterial_4y8ja")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -334.00012
+offset_top = 108.00001
+offset_right = -206.00012
+offset_bottom = 236.0
+grow_horizontal = 0
+rotation = 2.0943952
+scale = Vector2(1.9774169, 1.9774169)
+texture = ExtResource("8_wdqet")
+stretch_mode = 4
+
+[node name="RightBottomPortal" type="TextureRect" parent="Decorations"]
+material = SubResource("ShaderMaterial_4y8ja")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -55.0
+offset_right = -352.0
+offset_bottom = 73.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 4.1887903
+scale = Vector2(3.712524, 3.712524)
+texture = ExtResource("8_wdqet")
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 31.999939
+offset_top = 464.99997
+offset_right = 159.99994
+offset_bottom = 593.0
+rotation = -0.6247004
+scale = Vector2(17.278196, 17.278196)
+mouse_filter = 2
+texture = ExtResource("7_kyyyq")
+
+[connection signal="mouse_entered" from="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/New Game Button" to="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/New Game Button" method="PlayHoverSound"]
+[connection signal="mouse_entered" from="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/Continue Button" to="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/New Game Button" method="PlayHoverSound"]
+[connection signal="mouse_entered" from="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/Options Button" to="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/New Game Button" method="PlayHoverSound"]
+[connection signal="mouse_entered" from="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/Quit Button" to="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer/New Game Button" method="PlayHoverSound"]

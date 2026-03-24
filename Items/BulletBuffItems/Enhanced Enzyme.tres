@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BulletSpeedUpgrade" load_steps=3 format=3 uid="uid://v3xbf0ii81d8"]
+
+[ext_resource type="Texture2D" uid="uid://bdam3k6cce67g" path="res://Assets/Food/PNG/shadow/5.png" id="1_yitme"]
+
+[sub_resource type="GDScript" id="GDScript_3chhp"]
+script/source = "extends BaseItem
+class_name BulletSpeedUpgrade
+
+@export var speed = 500
+
+func applyItemEffect(_bullet:BaseBullet):
+	_bullet.bulletStats.bulletSpeed += speed
+	pass
+"
+
+[resource]
+script = SubResource("GDScript_3chhp")
+speed = 5
+ItemName = "Enhanced Enzyme"
+ItemDescription = "+5 Bullet Speed"
+ItemSprite = ExtResource("1_yitme")
+metadata/_custom_type_script = "uid://chmafla78a05f"

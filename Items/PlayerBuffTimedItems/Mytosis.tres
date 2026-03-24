@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c7mm0p26ofj26"]
+
+[ext_resource type="Script" uid="uid://chl8ouifrfo1y" path="res://Items/PlayerBuffTimedItems/Scripts/AutoShotSameBullet.gd" id="1_g82qo"]
+[ext_resource type="Texture2D" uid="uid://b0q46h50e2pch" path="res://Assets/Food/PNG/shadow/32.png" id="1_t6lsu"]
+
+[resource]
+script = ExtResource("1_g82qo")
+ItemName = "Mytosis"
+ItemDescription = "Shoots players' bullets every second"
+ItemSprite = ExtResource("1_t6lsu")
+Rarity = 4
+metadata/_custom_type_script = "uid://bggsbhu7tr0md"

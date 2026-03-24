@@ -1,0 +1,219 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkjfppjvlnabc"]
+
+[ext_resource type="Theme" uid="uid://bdscallsxjydj" path="res://GUI/Themes/MainTheme.tres" id="1_q0iih"]
+[ext_resource type="Script" uid="uid://lig5qyqa1ixi" path="res://GUI/Scripts/options.gd" id="2_ku0ce"]
+[ext_resource type="StyleBox" uid="uid://dcjbs4pvrdx7k" path="res://GUI/Themes/BuffItemHover.tres" id="3_ku0ce"]
+
+[node name="Options" type="CanvasLayer"]
+process_mode = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_q0iih")
+script = ExtResource("2_ku0ce")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 460.0
+offset_top = 120.0
+offset_right = 1420.0
+offset_bottom = 920.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_ku0ce")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="OPTIONS" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="RESOLUTION" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resolution"
+
+[node name="ResolutionOptions" type="OptionButton" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+selected = 2
+item_count = 6
+popup/item_0/text = "3840x2160"
+popup/item_0/id = 5
+popup/item_1/text = "2560x1440"
+popup/item_1/id = 4
+popup/item_2/text = "1920x1080"
+popup/item_2/id = 0
+popup/item_3/text = "1600x900"
+popup/item_3/id = 1
+popup/item_4/text = "1280x720"
+popup/item_4/id = 2
+popup/item_5/text = "640x360"
+popup/item_5/id = 3
+
+[node name="WINDOW MODE" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Window Mode"
+
+[node name="windowOptions" type="OptionButton" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+selected = 0
+item_count = 2
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="MASTER" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Master Volume"
+
+[node name="masterVolume" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+rounded = true
+
+[node name="MUSIC" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Music Volume"
+
+[node name="musicVolume" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+rounded = true
+
+[node name="UI" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "UI Volume"
+
+[node name="uiVolume" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+rounded = true
+
+[node name="EFFECTS" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Effects Volume"
+
+[node name="effectsVolume" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+rounded = true
+
+[node name="muteCheckBox" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Mute All"
+
+[node name="vsyncCheckBox" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "V-SYNC"
+
+[node name="Seperator" type="Control" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 5
+
+[node name="SaveButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Save"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="CloseButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Close"
+
+[connection signal="item_selected" from="Control/PanelContainer/MarginContainer/VBoxContainer/ResolutionOptions" to="Control" method="ResolutionChanged"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/ResolutionOptions" to="Control" method="HoverSoundPlay"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/ResolutionOptions" to="Control" method="PressedSoundPlay"]
+[connection signal="item_selected" from="Control/PanelContainer/MarginContainer/VBoxContainer/windowOptions" to="Control" method="SetWindowMode"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/windowOptions" to="Control" method="HoverSoundPlay"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/windowOptions" to="Control" method="PressedSoundPlay"]
+[connection signal="drag_started" from="Control/PanelContainer/MarginContainer/VBoxContainer/masterVolume" to="Control" method="PressedSoundPlay"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/masterVolume" to="Control" method="HoverSoundPlay"]
+[connection signal="value_changed" from="Control/PanelContainer/MarginContainer/VBoxContainer/masterVolume" to="Control" method="MasterAdjustVolume"]
+[connection signal="drag_started" from="Control/PanelContainer/MarginContainer/VBoxContainer/musicVolume" to="Control" method="MusicAdjustVolume"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/musicVolume" to="Control" method="HoverSoundPlay"]
+[connection signal="value_changed" from="Control/PanelContainer/MarginContainer/VBoxContainer/musicVolume" to="Control" method="MusicAdjustVolume"]
+[connection signal="drag_started" from="Control/PanelContainer/MarginContainer/VBoxContainer/uiVolume" to="Control" method="GUI_AdjustVolume"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/uiVolume" to="Control" method="HoverSoundPlay"]
+[connection signal="value_changed" from="Control/PanelContainer/MarginContainer/VBoxContainer/uiVolume" to="Control" method="GUI_AdjustVolume"]
+[connection signal="drag_started" from="Control/PanelContainer/MarginContainer/VBoxContainer/effectsVolume" to="Control" method="PressedSoundPlay"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/effectsVolume" to="Control" method="HoverSoundPlay"]
+[connection signal="value_changed" from="Control/PanelContainer/MarginContainer/VBoxContainer/effectsVolume" to="Control" method="GameAdjustVolume"]
+[connection signal="button_down" from="Control/PanelContainer/MarginContainer/VBoxContainer/muteCheckBox" to="Control" method="PressedSoundPlay"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/muteCheckBox" to="Control" method="HoverSoundPlay"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/muteCheckBox" to="Control" method="PressedSoundPlay"]
+[connection signal="toggled" from="Control/PanelContainer/MarginContainer/VBoxContainer/muteCheckBox" to="Control" method="MuteAll"]
+[connection signal="button_down" from="Control/PanelContainer/MarginContainer/VBoxContainer/vsyncCheckBox" to="Control" method="PressedSoundPlay"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/vsyncCheckBox" to="Control" method="HoverSoundPlay"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/vsyncCheckBox" to="Control" method="PressedSoundPlay"]
+[connection signal="toggled" from="Control/PanelContainer/MarginContainer/VBoxContainer/vsyncCheckBox" to="Control" method="AdjustV_SYNC"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/SaveButton" to="Control" method="HoverSoundPlay"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/SaveButton" to="Control" method="SaveOptions"]
+[connection signal="mouse_entered" from="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/CloseButton" to="Control" method="HoverSoundPlay"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/CloseButton" to="Control" method="CloseOptions"]

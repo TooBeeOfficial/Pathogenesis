@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TrackingBullets" load_steps=3 format=3 uid="uid://cdv2pb4h4lxh8"]
+
+[ext_resource type="Script" uid="uid://dmrkwamug5aio" path="res://Items/BulletBuffItems/BuffScripts/BouncingBullets.gd" id="1_bqj6l"]
+[ext_resource type="Texture2D" uid="uid://b7q85bm7uvts1" path="res://Assets/Food/PNG/shadow/43.png" id="1_erobg"]
+
+[resource]
+script = ExtResource("1_bqj6l")
+ItemName = "Elastic Cells"
+ItemDescription = "Bouncing bullets, if bouncing bullets is already active +1 bounce Amount"
+ItemSprite = ExtResource("1_erobg")
+Rarity = 3
+metadata/_custom_type_script = "uid://dor27nwr77qf4"

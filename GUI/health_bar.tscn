@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgthj730t8a0t"]
+
+[ext_resource type="Theme" uid="uid://bdscallsxjydj" path="res://GUI/Themes/MainTheme.tres" id="1_cdhan"]
+[ext_resource type="Texture2D" uid="uid://7o4msfq1eqlm" path="res://Assets/GUI/HealthBar/ProgressBarOver.svg" id="1_lfdin"]
+[ext_resource type="Script" uid="uid://2gfk4653dyne" path="res://GUI/Scripts/health_bar.gd" id="2_8nv1i"]
+[ext_resource type="Texture2D" uid="uid://2x8osk65thob" path="res://Assets/GUI/HealthBar/ProgressBar.svg" id="2_cdhan"]
+[ext_resource type="Texture2D" uid="uid://b4hqak6csoj5m" path="res://Assets/GUI/HealthBar/ProgressBarUnder (1).svg" id="5_i8haq"]
+
+[node name="HealthBar" type="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cdhan")
+script = ExtResource("2_8nv1i")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.1
+nine_patch_stretch = true
+stretch_margin_left = 14
+stretch_margin_top = 14
+stretch_margin_right = 14
+stretch_margin_bottom = 14
+texture_under = ExtResource("5_i8haq")
+texture_over = ExtResource("1_lfdin")
+texture_progress = ExtResource("2_cdhan")
+
+[node name="Label" type="Label" parent="TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.14509805, 0.14509805, 0.14509805, 0.7254902)
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]

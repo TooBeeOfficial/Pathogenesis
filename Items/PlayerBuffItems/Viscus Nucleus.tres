@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d1w2b8x25dfa4"]
+
+[ext_resource type="Texture2D" uid="uid://hi2d4cobp14j" path="res://Assets/Food/PNG/without_shadow/13.png" id="1_4u1lb"]
+[ext_resource type="Script" uid="uid://qobngi5235nu" path="res://Items/PlayerBuffItems/Scripts/SpeedAndHealthUpgrade.gd" id="2_4u1lb"]
+
+[resource]
+script = ExtResource("2_4u1lb")
+health = 15
+speed = -10
+ItemName = "Viscus Nucleus"
+ItemDescription = "+15 Max Health, - 10 Movement Speed"
+ItemSprite = ExtResource("1_4u1lb")
+Rarity = 1
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

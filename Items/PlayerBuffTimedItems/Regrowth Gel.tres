@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HealthRegeneration" load_steps=3 format=3 uid="uid://cwebvshipjsae"]
+
+[ext_resource type="Texture2D" uid="uid://cdluebujhbt3x" path="res://Assets/Food/PNG/shadow/13.png" id="1_pnu6v"]
+[ext_resource type="Script" uid="uid://b78wra63b025u" path="res://Items/PlayerBuffTimedItems/Scripts/HealthRegenerate.gd" id="2_pnu6v"]
+
+[resource]
+script = ExtResource("2_pnu6v")
+ItemName = "Regrowth Gel"
+ItemDescription = "Regenerate +1 Health Every second 50% of the time"
+ItemSprite = ExtResource("1_pnu6v")
+Rarity = 2
+metadata/_custom_type_script = "uid://bggsbhu7tr0md"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dhm80ykpcgkjk"]
+
+[ext_resource type="Texture2D" uid="uid://bj3eyteng2x24" path="res://Assets/Food/PNG/shadow/4.png" id="1_noqbj"]
+[ext_resource type="Script" uid="uid://7eptx3l624ps" path="res://Items/PlayerBuffTimedItems/Scripts/LoseFireRateOverTime.gd" id="2_noqbj"]
+
+[resource]
+script = ExtResource("2_noqbj")
+timerLimit = 300
+ItemName = "De-energizer"
+ItemDescription = "+5 Fire Rate, decrease over 5 minutes"
+ItemSprite = ExtResource("1_noqbj")
+Rarity = 4
+metadata/_custom_type_script = "uid://bggsbhu7tr0md"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmorUpgrade" load_steps=3 format=3 uid="uid://bx064gwgo26q7"]
+
+[ext_resource type="Texture2D" uid="uid://b0q46h50e2pch" path="res://Assets/Food/PNG/shadow/32.png" id="1_qf5q3"]
+[ext_resource type="Script" uid="uid://c0u57xsc6gnoa" path="res://Items/PlayerBuffItems/Scripts/ArmorUpgrade.gd" id="2_x2h6q"]
+
+[resource]
+script = ExtResource("2_x2h6q")
+ItemName = "Antibodies"
+ItemDescription = "Reduce Damage Taken by x"
+ItemSprite = ExtResource("1_qf5q3")
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://djrbyfpqmru0o"]
+
+[ext_resource type="Texture2D" uid="uid://b7q85bm7uvts1" path="res://Assets/Food/PNG/shadow/43.png" id="1_vf0cf"]
+[ext_resource type="Script" uid="uid://2wna8ct38ti3" path="res://Items/PlayerBuffAndBulletBuffEffects/Scripts/FireRateAndDamageUpgrade.gd" id="2_a20w7"]
+
+[resource]
+script = ExtResource("2_a20w7")
+ItemName = "Vitamins"
+ItemDescription = "+1 Fire Rate, +2 Damage"
+ItemSprite = ExtResource("1_vf0cf")
+Rarity = 2
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

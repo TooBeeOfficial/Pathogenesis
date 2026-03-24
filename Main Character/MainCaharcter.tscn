@@ -1,0 +1,205 @@
+[gd_scene load_steps=21 format=3 uid="uid://dvyu1rf8y5klk"]
+
+[ext_resource type="Script" uid="uid://bm0tmjosuow47" path="res://Main Character/MainCharacter.gd" id="1_ry1gm"]
+[ext_resource type="PackedScene" uid="uid://d130o2gimwf3w" path="res://Scenes/Location.tscn" id="2_mqfqq"]
+[ext_resource type="Resource" uid="uid://b81chlonrjrww" path="res://Main Character/PlayerCombatStats.tres" id="2_rqfi1"]
+[ext_resource type="Texture2D" uid="uid://241wemayiruk" path="res://Assets/Location/LocationPortal.png" id="3_62dl5"]
+[ext_resource type="Texture2D" uid="uid://btxt2l2x66l1r" path="res://Assets/Enemy/Untitled8_20250530050939.png" id="5_wj6qc"]
+[ext_resource type="PackedScene" uid="uid://briclbyqiqhf7" path="res://Scenes/CloudGenerator.tscn" id="7_d21e2"]
+[ext_resource type="Shader" uid="uid://bsc2vhimvvevu" path="res://Shaders/HitEffect.gdshader" id="7_mt886"]
+[ext_resource type="Texture2D" uid="uid://mj3iinxni4j3" path="res://Assets/Player/PlayerCharacter128x128.svg" id="8_mt886"]
+
+[sub_resource type="Curve" id="Curve_mqfqq"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_wj6qc"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.479215, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.858673, 0.858673, 1.15514e-06, 1, 0, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_r4lkt"]
+
+[sub_resource type="Curve" id="Curve_62dl5"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r4lkt"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_d21e2"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4lkt"]
+radius = 6.4
+height = 17.6
+
+[sub_resource type="Animation" id="Animation_mt886"]
+resource_name = "HitEffect"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_n7e8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ps5av"]
+resource_name = "Shoot"
+length = 0.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7e8v"]
+_data = {
+&"HitEffect": SubResource("Animation_mt886"),
+&"RESET": SubResource("Animation_n7e8v"),
+&"Shoot": SubResource("Animation_ps5av")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7e8v"]
+resource_local_to_scene = true
+shader = ExtResource("7_mt886")
+shader_parameter/active = false
+shader_parameter/Tint = Vector3(1, 0, 0)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(2.5, 2.5)
+collision_mask = 27
+input_pickable = true
+script = ExtResource("1_ry1gm")
+BaseCombat = ExtResource("2_rqfi1")
+Location = ExtResource("2_mqfqq")
+randomShakeStrengh = 30
+
+[node name="MovementParticle" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(-6.8, 0)
+emitting = false
+amount = 20
+texture = ExtResource("3_62dl5")
+lifetime = 1.4
+speed_scale = 2.0
+randomness = 0.2
+lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+angular_velocity_max = 20.0
+linear_accel_max = 2.0
+linear_accel_curve = SubResource("Curve_mqfqq")
+scale_amount_min = 0.05
+scale_amount_max = 0.08
+color_ramp = SubResource("Gradient_wj6qc")
+color_initial_ramp = SubResource("Gradient_r4lkt")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_62dl5")
+
+[node name="HitParticle" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_r4lkt")
+emitting = false
+amount = 30
+texture = ExtResource("5_wj6qc")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.58
+randomness = 1.0
+lifetime_randomness = 0.43
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 80.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+linear_accel_min = 1.0
+linear_accel_max = 2.0
+angle_min = -360.0
+angle_max = 360.0
+angle_curve = SubResource("Curve_d21e2")
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color = Color(0.964706, 1, 0, 1)
+hue_variation_min = 0.97
+hue_variation_max = 0.97
+anim_speed_max = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+collision_mask = 9
+
+[node name="AreaDetector" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_r4lkt")
+debug_color = Color(0.87522, 0, 0.18477, 0.42)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_r4lkt")
+debug_color = Color(0.87522, 0, 0.18477, 0.42)
+
+[node name="EyeFrames" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+ignore_time_scale = true
+
+[node name="CloudGenerator" parent="." instance=ExtResource("7_d21e2")]
+follow_viewport_enabled = false
+
+[node name="BulletSpawnLocation" type="Node2D" parent="."]
+position = Vector2(2.4000006, 0)
+
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n7e8v")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_n7e8v")
+rotation = 1.57079
+scale = Vector2(0.20724617, 0.20724617)
+texture = ExtResource("8_mt886")
+offset = Vector2(-2.422001e-05, 3.8601437)
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(-9.536743e-07, 0)
+rotation = -1.57079
+scale = Vector2(6.4, 6.4)
+zoom = Vector2(2, 2)
+position_smoothing_speed = 50.0
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+
+[connection signal="timeout" from="EyeFrames" to="." method="EyeFrameEnd"]

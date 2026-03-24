@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2oc1rshwx1i2"]
+
+[ext_resource type="Script" uid="uid://067x63qtvgjn" path="res://Scripts/food_spawner.gd" id="1_y5itk"]
+[ext_resource type="PackedScene" uid="uid://bg7d74jfbtuec" path="res://Scenes/Food.tscn" id="2_k0cp1"]
+[ext_resource type="Texture2D" uid="uid://ff5etdo3g2tq" path="res://Assets/Food/Fruit.svg" id="3_sxc0y"]
+[ext_resource type="Texture2D" uid="uid://g8icetv8hr5g" path="res://Assets/Food/FruitRed.svg" id="4_i3n1p"]
+[ext_resource type="Texture2D" uid="uid://d3wohuh6ephou" path="res://Assets/Food/FruitPurple.svg" id="5_q5bga"]
+[ext_resource type="Texture2D" uid="uid://bhypjiwod2xf4" path="res://Assets/Food/FruitBlue.svg" id="6_nkjq0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y5itk"]
+radius = 34.0588
+
+[node name="FoodSpawner" type="StaticBody2D"]
+scale = Vector2(1.9996239, 1.9996239)
+collision_layer = 16
+collision_mask = 31
+script = ExtResource("1_y5itk")
+FoodScene = ExtResource("2_k0cp1")
+foodList = Array[Texture]([ExtResource("3_sxc0y"), ExtResource("4_i3n1p"), ExtResource("5_q5bga"), ExtResource("6_nkjq0")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y5itk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.684342e-14, 0.9999999)
+scale = Vector2(0.6996973, 0.6996973)
+texture = ExtResource("3_sxc0y")

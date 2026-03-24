@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnkafd6v2gxco"]
+
+[ext_resource type="PackedScene" uid="uid://d0gcxypxfc7bo" path="res://Items/BaseItem.tscn" id="1_uchst"]
+[ext_resource type="Script" uid="uid://bggsbhu7tr0md" path="res://Items/Default/PlayerTimerEvent.gd" id="3_tmq8c"]
+
+[node name="BaseItem" instance=ExtResource("1_uchst")]
+script = ExtResource("3_tmq8c")
+waitTime = 1
+timerLimit = 10
+ItemName = ""
+ItemDescription = ""
+ItemSprite = null
+Rarity = 0

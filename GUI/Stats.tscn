@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddyy0n6fs3bas"]
+
+[ext_resource type="Theme" uid="uid://bdscallsxjydj" path="res://GUI/Themes/MainTheme.tres" id="1_13l6j"]
+[ext_resource type="Script" uid="uid://cq60xbqjxi2vb" path="res://GUI/Scripts/StatsLabelUI.gd" id="1_fg5c5"]
+[ext_resource type="Texture2D" uid="uid://cko0upanwcx8b" path="res://icon.svg" id="2_10qmg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwpwm"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_13l6j")
+script = ExtResource("1_fg5c5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qwpwm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_10qmg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "DEFAULT"
+vertical_alignment = 1

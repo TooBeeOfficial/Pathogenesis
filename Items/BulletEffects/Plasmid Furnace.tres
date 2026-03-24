@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BurnEffect" load_steps=3 format=3 uid="uid://cnn08gwrpcf5o"]
+
+[ext_resource type="Texture2D" uid="uid://50m0yg2u7qwx" path="res://Assets/Food/PNG/shadow/45.png" id="1_r0cu5"]
+[ext_resource type="Script" uid="uid://cgwdforuqvfhp" path="res://Items/BulletEffects/Scripts/Burn.gd" id="2_5qqcj"]
+
+[resource]
+script = ExtResource("2_5qqcj")
+ItemName = "Plasmid Furnace"
+ItemDescription = "2 Burn Damage for 5 seconds"
+ItemSprite = ExtResource("1_r0cu5")
+Rarity = 3
+metadata/_custom_type_script = "uid://chmafla78a05f"

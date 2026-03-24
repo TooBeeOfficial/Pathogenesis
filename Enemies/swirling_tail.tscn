@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://sh4java3xaj6"]
+
+[ext_resource type="Script" uid="uid://cuht7sxhteb1r" path="res://Enemies/SwirlingTail.gd" id="1_jy45j"]
+[ext_resource type="Texture2D" uid="uid://bkg6y1nc2i4k2" path="res://Assets/Enemy/Untitled11_20250603034650.png" id="2_vgyad"]
+
+[sub_resource type="Gradient" id="Gradient_jy45j"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.662376, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="SnakeTail" type="Line2D"]
+show_behind_parent = true
+points = PackedVector2Array(1, 2, -85, 25, -170, -2)
+width = 20.0
+gradient = SubResource("Gradient_jy45j")
+texture = ExtResource("2_vgyad")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("1_jy45j")

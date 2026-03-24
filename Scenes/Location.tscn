@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d130o2gimwf3w"]
+
+[ext_resource type="Script" uid="uid://mxqel7d8rtrw" path="res://Scripts/LocationScript.gd" id="1_i14ia"]
+[ext_resource type="Shader" uid="uid://fs0i81o1u8e" path="res://Shaders/LocationPortal.gdshader" id="2_3uksl"]
+[ext_resource type="Texture2D" uid="uid://by8mvsbngf8u3" path="res://Assets/Location/Location (1).svg" id="3_i14ia"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oikk4"]
+shader = ExtResource("2_3uksl")
+shader_parameter/time = 0.0
+shader_parameter/speed = 1.0
+shader_parameter/strength = 1.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/wave_frequency = 10.0
+shader_parameter/wave_amplitude = 0.01
+shader_parameter/wave_speed = 0.5
+shader_parameter/rotation_speed = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fm1r"]
+radius = 81.1542
+
+[node name="Location" type="Node2D"]
+script = ExtResource("1_i14ia")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oikk4")
+position = Vector2(0, -3)
+scale = Vector2(1.410096, 1.5304099)
+texture = ExtResource("3_i14ia")
+offset = Vector2(1.07677815e-05, -0.0033130646)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1fm1r")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

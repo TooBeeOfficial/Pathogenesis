@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfvtcxwbxabl"]
+
+[ext_resource type="Texture2D" uid="uid://d3qdn744eeeh2" path="res://Assets/ClassicMode/Untitled.png" id="1_8wnab"]
+[ext_resource type="Script" uid="uid://dv247bs1gbs7v" path="res://Classic Mode/wall_tile_map.gd" id="1_reg7t"]
+[ext_resource type="Texture2D" uid="uid://nlqmno5s3xcj" path="res://Assets/ClassicMode/grass Edge.png" id="2_whemt"]
+[ext_resource type="Texture2D" uid="uid://bcefc1ymwe5jx" path="res://Assets/ClassicMode/grass corner.png" id="3_j32vh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whemt"]
+texture = ExtResource("1_8wnab")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j32vh"]
+texture = ExtResource("2_whemt")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymimn"]
+texture = ExtResource("3_j32vh")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+1:0/0/terrains_peering_bit/top_left_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_left_corner = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_8wnab"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Grassy Edges"
+terrain_set_0/terrain_0/color = Color(0, 0.47843137, 0.25490198, 1)
+sources/0 = SubResource("TileSetAtlasSource_whemt")
+sources/1 = SubResource("TileSetAtlasSource_j32vh")
+sources/2 = SubResource("TileSetAtlasSource_ymimn")
+
+[node name="WallTileMap" type="TileMapLayer"]
+tile_set = SubResource("TileSet_8wnab")
+script = ExtResource("1_reg7t")

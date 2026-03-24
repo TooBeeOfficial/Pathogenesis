@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerSpeedBuff" load_steps=3 format=3 uid="uid://b7l40qps3sehv"]
+
+[ext_resource type="Texture2D" uid="uid://betgr4qr0agno" path="res://Assets/Food/PNG/shadow/48.png" id="1_hmjyv"]
+[ext_resource type="Script" uid="uid://cl2hr3u5jllhe" path="res://Items/PlayerBuffItems/Scripts/SpeedUpgrade.gd" id="2_hmjyv"]
+
+[resource]
+script = ExtResource("2_hmjyv")
+speed = 25
+ItemName = "Elastic Cytoskeleton"
+ItemDescription = "+25 Movement Speed"
+ItemSprite = ExtResource("1_hmjyv")
+Rarity = 1
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dcjbs4pvrdx7k"]
+
+[ext_resource type="Texture2D" uid="uid://dkm4m31fdimvn" path="res://Assets/GUI/MenuBoxScaled.svg" id="1_2b7oq"]
+
+[resource]
+texture = ExtResource("1_2b7oq")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0

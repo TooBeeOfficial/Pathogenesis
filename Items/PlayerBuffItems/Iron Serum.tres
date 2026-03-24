@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerHealthBuff" load_steps=3 format=3 uid="uid://cwkqqdghwg5rf"]
+
+[ext_resource type="Texture2D" uid="uid://bug6gj75fbosv" path="res://Assets/Food/PNG/shadow/37.png" id="1_omk4m"]
+[ext_resource type="Script" uid="uid://mqx6qi33huqf" path="res://Items/PlayerBuffItems/Scripts/HealthUpgrade.gd" id="2_r4i5p"]
+
+[resource]
+script = ExtResource("2_r4i5p")
+ItemName = "Iron Serum"
+ItemDescription = "+5 Max Health"
+ItemSprite = ExtResource("1_omk4m")
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

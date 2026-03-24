@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://o6x5q135gd00"]
+
+[ext_resource type="Script" uid="uid://celu5pe8n1rmt" path="res://Effects/burn_effect_scale_adjustment.gd" id="1_fu65u"]
+[ext_resource type="Texture2D" uid="uid://c2k5wmhja4okk" path="res://Assets/Clouds/Cloud1.png" id="2_wlbg5"]
+
+[sub_resource type="Curve" id="Curve_u2s5u"]
+_data = [Vector2(0.5030804, 1), 0.0, -0.002429922, 0, 0, Vector2(1, 0.41932273), -1.9733542, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_n8mua"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.21700245, 0.39175028, 0.48302984, 0.6655337, 1)
+colors = PackedColorArray(0.8714178, 0.00028625765, 0.065063655, 1, 0.73393697, 0.3647502, 0, 1, 0.7693377, 0.52659863, 3.85046e-07, 1, 0, 0, 0, 1, 0.0845887, 0.0845887, 0.0845886, 1, 0.811836, 0.811836, 0.811836, 1)
+
+[sub_resource type="Curve" id="Curve_fu65u"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.0838786, -1), 0.0, -0.42201, 0, 0, Vector2(1, 1), 0.106999, 0.0, 0, 0]
+point_count = 2
+
+[node name="BurnEffect" type="Node2D"]
+script = ExtResource("1_fu65u")
+
+[node name="BurnEffectParticle" type="CPUParticles2D" parent="."]
+position = Vector2(-7, -54)
+rotation = -1.57079
+emitting = false
+amount = 15
+texture = ExtResource("2_wlbg5")
+explosiveness = 0.1
+randomness = 0.55
+lifetime_randomness = 0.5
+direction = Vector2(20, 0)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -59.45
+angular_velocity_max = 77.2
+linear_accel_min = 1.0
+linear_accel_max = 15.0
+radial_accel_max = 3.0
+tangential_accel_max = 31.2
+damping_max = 0.99
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_u2s5u")
+color_ramp = SubResource("Gradient_n8mua")
+hue_variation_curve = SubResource("Curve_fu65u")
+anim_speed_min = 1.0
+anim_speed_max = 5.0

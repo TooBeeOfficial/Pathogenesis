@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=3 uid="uid://yfc56yokt7a3"]
+
+[ext_resource type="Script" uid="uid://dwfrkf4jp0w1t" path="res://SceneManager/Core/game.gd" id="1_u8fqs"]
+[ext_resource type="PackedScene" uid="uid://o0tw3uplpg25" path="res://GUI/InGameGUI.tscn" id="2_1bge3"]
+[ext_resource type="Texture2D" uid="uid://babcql1untkli" path="res://Assets/Backgrouds/TestBG.png" id="3_2n35w"]
+[ext_resource type="PackedScene" uid="uid://c2oc1rshwx1i2" path="res://Scenes/FoodSpawner.tscn" id="4_5pi5h"]
+[ext_resource type="PackedScene" uid="uid://dvyu1rf8y5klk" path="res://Main Character/MainCaharcter.tscn" id="5_8uhhb"]
+[ext_resource type="PackedScene" uid="uid://crap3svg7ce2j" path="res://Enemies/Enemies/MushroomBase.tscn" id="6_u0e1k"]
+[ext_resource type="PackedScene" uid="uid://d130o2gimwf3w" path="res://Scenes/Location.tscn" id="7_1g7kq"]
+[ext_resource type="PackedScene" uid="uid://78t34lgl562h" path="res://Enemies/Enemies/Blobl.tscn" id="8_kuwih"]
+[ext_resource type="PackedScene" uid="uid://boeq3jdnvjkdy" path="res://Enemies/Enemies/Swarmling.tscn" id="9_ca6cj"]
+[ext_resource type="PackedScene" uid="uid://dhjmy5jtl80es" path="res://GUI/ChooseBuffScreen.tscn" id="10_1bge3"]
+[ext_resource type="PackedScene" uid="uid://caalv26dnrnbn" path="res://Classic Mode/classic_mode.tscn" id="11_xrbhc"]
+
+[node name="Game" type="Node"]
+process_mode = 1
+script = ExtResource("1_u8fqs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InGameGui" parent="CanvasLayer" instance=ExtResource("2_1bge3")]
+
+[node name="FoodSpawner" parent="." instance=ExtResource("4_5pi5h")]
+position = Vector2(-160, -5)
+
+[node name="Player" parent="." instance=ExtResource("5_8uhhb")]
+
+[node name="EnemyBase" parent="." instance=ExtResource("6_u0e1k")]
+position = Vector2(-174, 358)
+
+[node name="Location" parent="." instance=ExtResource("7_1g7kq")]
+position = Vector2(-323, 198)
+
+[node name="EnemyBase3" parent="." instance=ExtResource("8_kuwih")]
+position = Vector2(443, 31)
+
+[node name="EnemyBase2" parent="." instance=ExtResource("9_ca6cj")]
+position = Vector2(132, 265)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="buffScreen" parent="CanvasLayer2" instance=ExtResource("10_1bge3")]
+
+[node name="ClassicMode" parent="." instance=ExtResource("11_xrbhc")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(38514.18, 20547.115)
+scale = Vector2(27.211142, 28.733206)
+texture = ExtResource("3_2n35w")

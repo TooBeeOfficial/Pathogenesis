@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dkfx1ltcexwl8"]
+
+[ext_resource type="Texture2D" uid="uid://d1mriqprs3ce1" path="res://Assets/Food/PNG/shadow/24.png" id="1_2npwm"]
+[ext_resource type="Script" uid="uid://ccghfe1egl7gg" path="res://Items/PlayerBuffAndBulletBuffEffects/Scripts/FireRateAndShotSpeedUpgrade.gd" id="2_1cp56"]
+
+[resource]
+script = ExtResource("2_1cp56")
+ItemName = "Cellular Tail"
+ItemDescription = "+1 Fire Rate, +15 BulletSpeed"
+ItemSprite = ExtResource("1_2npwm")
+Rarity = 2
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

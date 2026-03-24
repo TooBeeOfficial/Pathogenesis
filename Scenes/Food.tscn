@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg7d74jfbtuec"]
+
+[ext_resource type="Script" uid="uid://36p5y14mdg4w" path="res://Scripts/food.gd" id="1_38wp4"]
+[ext_resource type="Texture2D" uid="uid://btxt2l2x66l1r" path="res://Assets/Enemy/Untitled8_20250530050939.png" id="3_b6b8d"]
+[ext_resource type="Texture2D" uid="uid://bktmuh2kjkpxp" path="res://Assets/Food/FoodCrumb.svg" id="3_k1agc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b6b8d"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_b6b8d"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngagn"]
+radius = 13.0384
+
+[node name="Food" type="Area2D"]
+disable_mode = 1
+collision_mask = 3
+script = ExtResource("1_38wp4")
+
+[node name="FoodEatenParticle" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_b6b8d")
+emitting = false
+amount = 30
+texture = ExtResource("3_b6b8d")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.58
+randomness = 1.0
+lifetime_randomness = 0.43
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 80.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+linear_accel_min = 1.0
+linear_accel_max = 2.0
+angle_min = -360.0
+angle_max = 360.0
+angle_curve = SubResource("Curve_b6b8d")
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+hue_variation_min = 0.97
+hue_variation_max = 0.97
+anim_speed_max = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.45328593, 0.45328593)
+texture = ExtResource("3_k1agc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ngagn")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEneter"]

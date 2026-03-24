@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dubidle4b5tnj"]
+
+[ext_resource type="Script" uid="uid://diyl7ai83xsjx" path="res://AudioScripts/ui_sfx.gd" id="1_bb5d2"]
+[ext_resource type="AudioStream" uid="uid://bnh0k0rrqbo1f" path="res://Assets/sounds/GUI_Sound_Effects_by_Lokif/Hovered.wav" id="1_tg4xv"]
+[ext_resource type="AudioStream" uid="uid://dqct1v70pmat3" path="res://Assets/sounds/GUI_Sound_Effects_by_Lokif/Preesed.wav" id="2_0vd2d"]
+[ext_resource type="AudioStream" uid="uid://cj4ljaqoeyvks" path="res://Assets/sounds/GotMythicalItem.ogg" id="4_0m7r0"]
+[ext_resource type="AudioStream" uid="uid://csd5tq2ht836b" path="res://Assets/sounds/GotLegendaryItem.ogg" id="5_k32fv"]
+
+[node name="UI_SFX" type="Node"]
+process_mode = 3
+script = ExtResource("1_bb5d2")
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_tg4xv")
+bus = &"UI SFX"
+
+[node name="Pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0vd2d")
+bus = &"UI SFX"
+
+[node name="BuffMythical" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0m7r0")
+bus = &"Game SFX"
+
+[node name="BuffLegendary" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_k32fv")
+bus = &"Game SFX"

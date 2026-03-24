@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx1cxndixgn5h"]
+
+[ext_resource type="PackedScene" uid="uid://ckva2dxlxcx2w" path="res://SceneManager/UI/UI_Root.tscn" id="3_xxgw3"]
+[ext_resource type="PackedScene" uid="uid://yfc56yokt7a3" path="res://SceneManager/Core/game.tscn" id="4_c7688"]
+
+[node name="MAINSCENE" type="Node"]
+process_mode = 3
+
+[node name="Game" parent="." instance=ExtResource("4_c7688")]
+
+[node name="UiRoot" parent="." instance=ExtResource("3_xxgw3")]

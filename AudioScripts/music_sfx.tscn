@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cygjvmdiwotjp"]
+
+[ext_resource type="Script" uid="uid://daeoeg4m5m5f0" path="res://AudioScripts/PitchRandomizer.gd" id="1_4tnlk"]
+[ext_resource type="AudioStream" uid="uid://dhetws5ebmnpm" path="res://Assets/Music/MainBGM.ogg" id="2_6qwb1"]
+
+[node name="MusicAudioManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_4tnlk")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6qwb1")
+bus = &"BGM"
+parameters/looping = true

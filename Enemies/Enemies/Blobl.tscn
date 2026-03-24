@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://78t34lgl562h"]
+
+[ext_resource type="PackedScene" uid="uid://cvincm84v2d77" path="res://Enemies/EnemyBase.tscn" id="1_pyxfq"]
+[ext_resource type="Resource" uid="uid://dtqp0f8uo5byh" path="res://Enemies/EnemyStats/Blobl.tres" id="2_fbo3v"]
+[ext_resource type="PackedScene" uid="uid://c5rcuitq5pj1c" path="res://Enemies/Tail.tscn" id="2_ttgcn"]
+[ext_resource type="Shader" uid="uid://bsc2vhimvvevu" path="res://Shaders/HitEffect.gdshader" id="3_fbo3v"]
+[ext_resource type="Texture2D" uid="uid://15my1n8ow22o" path="res://Assets/Enemy/Blobl.svg" id="4_joaje"]
+
+[sub_resource type="Curve" id="Curve_ttgcn"]
+_data = [Vector2(0, 0.6570992), 0.0, 0.0, 0, 0, Vector2(0.30734795, 0.8439319), -0.024653899, -0.024653899, 0, 0, Vector2(0.5140316, 0.6295504), 0.0, 0.0, 0, 0, Vector2(0.7375579, 0.8820354), 0.0, 0.0, 0, 0, Vector2(1, 0.6769814), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8331p"]
+resource_local_to_scene = true
+shader = ExtResource("3_fbo3v")
+shader_parameter/active = false
+shader_parameter/Tint = Vector3(1, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63335"]
+
+[node name="EnemyBase" instance=ExtResource("1_pyxfq")]
+BaseCombat = ExtResource("2_fbo3v")
+
+[node name="Tail" parent="." index="0" instance=ExtResource("2_ttgcn")]
+position = Vector2(-22, 42)
+Width = 50
+WidthCurve = SubResource("Curve_ttgcn")
+
+[node name="Tail2" parent="." index="1" instance=ExtResource("2_ttgcn")]
+position = Vector2(-24.719458, -37.90316)
+Width = 50
+WidthCurve = SubResource("Curve_ttgcn")
+
+[node name="Tail3" parent="." index="2" instance=ExtResource("2_ttgcn")]
+position = Vector2(-31.311312, 3.2959251)
+Width = 50
+WidthCurve = SubResource("Curve_ttgcn")
+
+[node name="Sprite2D" parent="." index="3"]
+material = SubResource("ShaderMaterial_8331p")
+scale = Vector2(1.6100821, 1.6100821)
+texture = ExtResource("4_joaje")
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(3.2959275, -1.6479638)
+scale = Vector2(6.7662206, 6.905419)
+shape = SubResource("CircleShape2D_63335")
+
+[node name="BulletSpawnLocation" type="Node2D" parent="." index="9"]
+position = Vector2(49.43891, 0)

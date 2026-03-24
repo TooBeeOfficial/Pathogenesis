@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://crap3svg7ce2j"]
+
+[ext_resource type="PackedScene" uid="uid://cvincm84v2d77" path="res://Enemies/EnemyBase.tscn" id="1_1fnvn"]
+[ext_resource type="Resource" uid="uid://meil430hrdqo" path="res://Enemies/EnemyStats/MushroomBase.tres" id="2_icqgy"]
+[ext_resource type="Shader" uid="uid://bsc2vhimvvevu" path="res://Shaders/HitEffect.gdshader" id="2_vhpnn"]
+[ext_resource type="PackedScene" uid="uid://cxy8vnjv6b7se" path="res://Enemies/MushroomSporeReleaser.tscn" id="3_icqgy"]
+[ext_resource type="PackedScene" uid="uid://sh4java3xaj6" path="res://Enemies/swirling_tail.tscn" id="4_vhpnn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mk0u6"]
+resource_local_to_scene = true
+shader = ExtResource("2_vhpnn")
+shader_parameter/active = false
+shader_parameter/Tint = Vector3(1, 0, 0)
+
+[node name="EnemyBase" instance=ExtResource("1_1fnvn")]
+BaseCombat = ExtResource("2_icqgy")
+
+[node name="MushroomSporeReleaser" parent="." index="0" instance=ExtResource("3_icqgy")]
+position = Vector2(-28.999998, 0)
+rotation = -1.5707941
+scale = Vector2(0.49115336, 0.49115336)
+
+[node name="MushroomSporeReleaser2" parent="." index="1" instance=ExtResource("3_icqgy")]
+position = Vector2(-15, 17)
+rotation = -2.6967149
+scale = Vector2(0.49115336, 0.49115336)
+
+[node name="MushroomSporeReleaser3" parent="." index="2" instance=ExtResource("3_icqgy")]
+position = Vector2(-2, -19)
+rotation = 0.18612456
+scale = Vector2(0.49115336, 0.49115336)
+
+[node name="Sprite2D" parent="." index="3"]
+material = SubResource("ShaderMaterial_mk0u6")
+
+[node name="CollisionShape2D" parent="." index="4"]
+scale = Vector2(0.6291413, 0.78767914)
+
+[node name="SnakeTail" parent="." index="9" instance=ExtResource("4_vhpnn")]
+position = Vector2(-28, -3)
+segmentLenght = 30
+distance = 5
+
+[node name="BulletSpawnLocation" type="Node2D" parent="." index="10"]
+position = Vector2(10, 0)
+scale = Vector2(1.4780172, 1.6795212)

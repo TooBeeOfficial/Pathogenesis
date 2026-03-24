@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ncg21ww5mjxc"]
+
+[ext_resource type="Texture2D" uid="uid://dh62p0h2tsbh7" path="res://Assets/Food/PNG/shadow/47.png" id="1_q3jmw"]
+[ext_resource type="Script" uid="uid://ddni6r472b1su" path="res://Items/PlayerBuffItems/Scripts/SpeedMultUpgrade.gd" id="2_q3jmw"]
+
+[resource]
+script = ExtResource("2_q3jmw")
+ItemName = "Warm Plasma"
+ItemDescription = "1.05x Speed Multiplier"
+ItemSprite = ExtResource("1_q3jmw")
+Rarity = 1
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

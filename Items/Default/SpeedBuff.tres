@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerSpeedBuff" load_steps=3 format=3 uid="uid://bvy1u3mmjh24g"]
+
+[ext_resource type="Script" uid="uid://cl2hr3u5jllhe" path="res://Items/PlayerBuffItems/Scripts/SpeedUpgrade.gd" id="1_facbd"]
+[ext_resource type="Texture2D" uid="uid://cigajk6idmwip" path="res://Assets/Food/PNG/shadow/7.png" id="1_n72ca"]
+
+[resource]
+script = ExtResource("1_facbd")
+speed = 5
+ItemName = "Lemon"
+ItemDescription = "+5 Player Speed"
+ItemSprite = ExtResource("1_n72ca")
+metadata/_custom_type_script = "uid://2o1g4i5r3s4r"

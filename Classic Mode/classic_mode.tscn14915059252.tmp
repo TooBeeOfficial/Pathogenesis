@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://caalv26dnrnbn"]
+
+[ext_resource type="Script" uid="uid://bu4smjm4k1cuf" path="res://Classic Mode/classic_mode.gd" id="1_io675"]
+[ext_resource type="PackedScene" uid="uid://dib368l7s0bge" path="res://Classic Mode/obstacle_spawner.tscn" id="1_s0xf5"]
+[ext_resource type="PackedScene" uid="uid://cfvtcxwbxabl" path="res://Classic Mode/wall_tile_map.tscn" id="2_cjmsd"]
+
+[node name="ClassicMode" type="Node"]
+process_mode = 3
+script = ExtResource("1_io675")
+
+[node name="ObstacleSpawner" parent="." instance=ExtResource("1_s0xf5")]
+
+[node name="WallTileMap" parent="." instance=ExtResource("2_cjmsd")]

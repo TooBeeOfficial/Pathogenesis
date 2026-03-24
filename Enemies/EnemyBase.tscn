@@ -1,0 +1,187 @@
+[gd_scene load_steps=23 format=3 uid="uid://cvincm84v2d77"]
+
+[ext_resource type="Script" uid="uid://bada2tg8yh8tn" path="res://Scripts/enemy_base.gd" id="1_jaifj"]
+[ext_resource type="Script" uid="uid://c4q1k4wmt0b25" path="res://Enemies/EnemyScripts/EnemyCombatunctionality.gd" id="2_lol7t"]
+[ext_resource type="PackedScene" uid="uid://bggy2g423883a" path="res://Bullets/BaseBullet.tscn" id="2_x18kb"]
+[ext_resource type="Script" uid="uid://2o1g4i5r3s4r" path="res://Items/Default/PlayerBuff.gd" id="3_73wjf"]
+[ext_resource type="Shader" uid="uid://bsc2vhimvvevu" path="res://Shaders/HitEffect.gdshader" id="3_d3qlt"]
+[ext_resource type="Texture2D" uid="uid://btxt2l2x66l1r" path="res://Assets/Enemy/Untitled8_20250530050939.png" id="4_ihd1l"]
+[ext_resource type="Texture2D" uid="uid://bh8vqyoee33br" path="res://Assets/Enemy/EnemyBase.svg" id="5_anohl"]
+[ext_resource type="PackedScene" uid="uid://o6x5q135gd00" path="res://Effects/BurnEffect.tscn" id="5_x1af1"]
+[ext_resource type="Script" uid="uid://mvmmdsmvceoy" path="res://Enemies/State Machine/StateMachineHandler.gd" id="7_7vcpx"]
+[ext_resource type="Script" uid="uid://dwv6brydlcjcv" path="res://Enemies/State Machine/idle.gd" id="8_rb56g"]
+[ext_resource type="Script" uid="uid://dacl3rh4c7d8f" path="res://Enemies/State Machine/follow.gd" id="9_anohl"]
+[ext_resource type="Script" uid="uid://dg3j4dumh4jht" path="res://Enemies/State Machine/shoot.gd" id="10_uvaen"]
+[ext_resource type="Script" uid="uid://c8ghg7j8luvhq" path="res://Enemies/State Machine/death.gd" id="12_o7klo"]
+
+[sub_resource type="Resource" id="Resource_k210i"]
+script = ExtResource("2_lol7t")
+fireRate = 1.0
+bulletScene = ExtResource("2_x18kb")
+metadata/_custom_type_script = "uid://c4q1k4wmt0b25"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d3qlt"]
+resource_local_to_scene = true
+shader = ExtResource("3_d3qlt")
+shader_parameter/active = false
+shader_parameter/Tint = Vector3(1, 0, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ihd1l"]
+radius = 29.428308
+height = 82.39926
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ygec5"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_p4f1w"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_x18kb"]
+resource_name = "DeathAnimation"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rb56g"]
+resource_name = "HitAnimation"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_anohl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvaen"]
+_data = {
+&"DeathAnimation": SubResource("Animation_x18kb"),
+&"HitAnimation": SubResource("Animation_rb56g"),
+&"RESET": SubResource("Animation_anohl")
+}
+
+[node name="EnemyBase" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 23
+script = ExtResource("1_jaifj")
+BaseCombat = SubResource("Resource_k210i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_d3qlt")
+scale = Vector2(0.82355577, 0.82355577)
+texture = ExtResource("5_anohl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+scale = Vector2(0.629131, 0.629131)
+shape = SubResource("CapsuleShape2D_ihd1l")
+
+[node name="HitParticle" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ygec5")
+emitting = false
+amount = 15
+texture = ExtResource("4_ihd1l")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.58
+randomness = 1.0
+lifetime_randomness = 0.7
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = 1.0
+linear_accel_min = 1.5
+linear_accel_max = 2.0
+angle_min = -360.0
+angle_max = 360.0
+angle_curve = SubResource("Curve_p4f1w")
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+color = Color(0, 0, 0, 1)
+hue_variation_min = 0.97
+hue_variation_max = 0.97
+anim_speed_max = 1.0
+
+[node name="BurnEffect" parent="." instance=ExtResource("5_x1af1")]
+position = Vector2(-1.0000038, -4.7683716e-07)
+rotation = -1.5460186
+scale = Vector2(0.19913483, 0.19913483)
+
+[node name="EnemyAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uvaen")
+}
+
+[node name="FiniteStateMachineHandler" type="Node" parent="." node_paths=PackedStringArray("INIT_STATE")]
+script = ExtResource("7_7vcpx")
+INIT_STATE = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+script = ExtResource("8_rb56g")
+attachedEnemy = NodePath("../..")
+
+[node name="FOLLOW" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+script = ExtResource("9_anohl")
+stateEnum = 1
+attachedEnemy = NodePath("../..")
+
+[node name="SHOOT" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+script = ExtResource("10_uvaen")
+stateEnum = 3
+attachedEnemy = NodePath("../..")
+
+[node name="DEATH" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+script = ExtResource("12_o7klo")
+stateEnum = 5
+attachedEnemy = NodePath("../..")

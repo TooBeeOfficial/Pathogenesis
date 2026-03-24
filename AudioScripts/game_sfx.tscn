@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4y7jh8sdkmj8"]
+
+[ext_resource type="Script" uid="uid://d2vv5obonsb4n" path="res://AudioScripts/game_sfx.gd" id="1_l2dsd"]
+[ext_resource type="AudioStream" uid="uid://bqxf2884g0ab4" path="res://Assets/sounds/BulletShot.ogg" id="2_031m8"]
+[ext_resource type="AudioStream" uid="uid://v77m4y6k0gx6" path="res://Assets/sounds/80-CC0-creature-SFX/PlayerGetHit.ogg" id="2_l2dsd"]
+[ext_resource type="AudioStream" uid="uid://bvxte2q8yo0rv" path="res://Assets/sounds/80-CC0-creature-SFX/EnemyGetHitBase.ogg" id="3_031m8"]
+[ext_resource type="AudioStream" uid="uid://crprxmchka6k4" path="res://Assets/sounds/PlayerEatFruit.ogg" id="5_031m8"]
+
+[node name="GameSFX" type="Node"]
+process_mode = 3
+script = ExtResource("1_l2dsd")
+
+[node name="PlayerShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_031m8")
+volume_db = -10.0
+bus = &"Game SFX"
+
+[node name="PlayerGotHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_l2dsd")
+volume_db = -14.0
+bus = &"Game SFX"
+
+[node name="EnemyGotHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_031m8")
+volume_db = -13.0
+bus = &"Game SFX"
+
+[node name="PlayerEatFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_031m8")
+volume_db = -20.0
+bus = &"Game SFX"

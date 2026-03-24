@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CombatFunctionality" load_steps=4 format=3 uid="uid://b81chlonrjrww"]
+
+[ext_resource type="Script" uid="uid://d2ddvfprbyrqv" path="res://CommonFunctions/BaseScripts/BaseCombotFunctionality.gd" id="1_f3x0u"]
+[ext_resource type="PackedScene" uid="uid://bggy2g423883a" path="res://Bullets/BaseBullet.tscn" id="1_p62ba"]
+[ext_resource type="Script" uid="uid://2o1g4i5r3s4r" path="res://Items/Default/PlayerBuff.gd" id="2_67nq1"]
+
+[resource]
+script = ExtResource("1_f3x0u")
+bulletScene = ExtResource("1_p62ba")
+metadata/_custom_type_script = "uid://d2ddvfprbyrqv"

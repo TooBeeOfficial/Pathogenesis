@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://o0tw3uplpg25"]
+
+[ext_resource type="Script" uid="uid://cp0kwq0s6pnm1" path="res://GUI/Scripts/StatsVerticalBox.gd" id="1_siumi"]
+[ext_resource type="Theme" uid="uid://bdscallsxjydj" path="res://GUI/Themes/MainTheme.tres" id="1_wl0g5"]
+[ext_resource type="Texture2D" uid="uid://dxhykuakgrcii" path="res://Assets/GUI/GamePanelBorderBig.svg" id="2_siumi"]
+[ext_resource type="PackedScene" uid="uid://dgthj730t8a0t" path="res://GUI/health_bar.tscn" id="4_snrnw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wl0g5"]
+texture = ExtResource("2_siumi")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(1, 1, 1, 0.34901962)
+
+[node name="InGameGui" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("1_wl0g5")
+script = ExtResource("1_siumi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 250.0
+offset_bottom = 122.0
+grow_vertical = 2
+
+[node name="HealthBar" parent="VBoxContainer" instance=ExtResource("4_snrnw")]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wl0g5")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="StatsVerticalBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="StatsLabel" type="Label" parent="VBoxContainer/Panel/MarginContainer/StatsVerticalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.4284538, 0.3597549, 1)
+text = "STATS"
+horizontal_alignment = 1
+vertical_alignment = 1

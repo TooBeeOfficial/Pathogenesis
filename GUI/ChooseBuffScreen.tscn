@@ -1,0 +1,414 @@
+[gd_scene load_steps=17 format=3 uid="uid://dhjmy5jtl80es"]
+
+[ext_resource type="Theme" uid="uid://bdscallsxjydj" path="res://GUI/Themes/MainTheme.tres" id="1_12ajx"]
+[ext_resource type="Script" uid="uid://sqltwl8uje6y" path="res://GUI/Scripts/BuffChooseManager.gd" id="2_wc84s"]
+[ext_resource type="Texture2D" uid="uid://bdam3k6cce67g" path="res://Assets/Food/PNG/shadow/5.png" id="3_gj4un"]
+[ext_resource type="StyleBox" uid="uid://bif4ea2a3axnr" path="res://GUI/Themes/BuffItem.tres" id="3_qdcho"]
+[ext_resource type="Script" uid="uid://k68gojy4khdi" path="res://GUI/Scripts/BuffItemPanel.gd" id="3_vkkf2"]
+[ext_resource type="StyleBox" uid="uid://c0xddsxo16ujt" path="res://GUI/ChooseBuffScreenRarityShadow.tres" id="4_1w2kp"]
+[ext_resource type="StyleBox" uid="uid://bacfqpl7eoyjq" path="res://GUI/Themes/BuffItemPressed.tres" id="4_tnf70"]
+[ext_resource type="Texture2D" uid="uid://bktmuh2kjkpxp" path="res://Assets/Food/FoodCrumb.svg" id="4_ubah8"]
+[ext_resource type="Texture2D" uid="uid://ckverr1orge7c" path="res://Assets/Food/PNG/shadow/10.png" id="5_1w2kp"]
+[ext_resource type="StyleBox" uid="uid://dcjbs4pvrdx7k" path="res://GUI/Themes/BuffItemHover.tres" id="5_lcgmp"]
+[ext_resource type="Resource" uid="uid://bvy1u3mmjh24g" path="res://Items/Default/SpeedBuff.tres" id="6_2ycdi"]
+[ext_resource type="Curve" uid="uid://gr1tn17nyke7" path="res://Curves/ChooseBuffScreenHueCurve.tres" id="10_ubah8"]
+[ext_resource type="Script" uid="uid://ds145sjrhoimb" path="res://GUI/itemOneReroll.gd" id="11_h3v4m"]
+[ext_resource type="Texture2D" uid="uid://omamsqvumsb7" path="res://Assets/Food/PNG/without_shadow/3.png" id="11_ngx76"]
+[ext_resource type="Script" uid="uid://b2gdcbh3mvacr" path="res://GUI/itemTwoReroll.gd" id="13_tnf70"]
+[ext_resource type="Script" uid="uid://rn3as0t1bavy" path="res://GUI/itemThreeReroll.gd" id="14_tnf70"]
+
+[node name="buffScreen" type="Control"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_12ajx")
+script = ExtResource("2_wc84s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -275.5
+offset_right = 464.0
+offset_bottom = 275.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = ExtResource("3_qdcho")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_ubah8")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="FoodLabel" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "89"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = ExtResource("3_qdcho")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_1w2kp")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="ReRollCost" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "89"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_qdcho")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ShadowContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("4_1w2kp")
+
+[node name="ItemOne" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_qdcho")
+script = ExtResource("3_vkkf2")
+ItemBuffStyle = ExtResource("3_qdcho")
+ItemHoverStyle = ExtResource("5_lcgmp")
+ItemBuffPressedStyle = ExtResource("4_tnf70")
+item = ExtResource("6_2ycdi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne"]
+layout_mode = 2
+
+[node name="BuffSprite" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+texture = ExtResource("3_gj4un")
+stretch_mode = 3
+
+[node name="BuffNameLabel" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne/VBoxContainer"]
+layout_mode = 2
+text = "NAME"
+
+[node name="BuffDescriptionLabel" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Description of the item that is currently being displayed"
+autowrap_mode = 2
+
+[node name="RarityRight" type="CPUParticles2D" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne"]
+z_index = 1
+position = Vector2(285.5, 237.5)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.2
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+hue_variation_curve = ExtResource("10_ubah8")
+
+[node name="RarityLeft" type="CPUParticles2D" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne"]
+z_index = 1
+position = Vector2(-2.9375, 237.625)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.2
+direction = Vector2(-1, 0)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+hue_variation_curve = ExtResource("10_ubah8")
+
+[node name="ShadowContainer2" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("4_1w2kp")
+
+[node name="ItemTwo" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_qdcho")
+script = ExtResource("3_vkkf2")
+ItemBuffStyle = ExtResource("3_qdcho")
+ItemHoverStyle = ExtResource("5_lcgmp")
+ItemBuffPressedStyle = ExtResource("4_tnf70")
+item = ExtResource("6_2ycdi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo"]
+layout_mode = 2
+
+[node name="BuffSprite" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+texture = ExtResource("3_gj4un")
+stretch_mode = 3
+
+[node name="BuffNameLabel" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo/VBoxContainer"]
+layout_mode = 2
+text = "NAME"
+
+[node name="BuffDescriptionLabel" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Description of the item that is currently being displayed"
+autowrap_mode = 2
+
+[node name="RarityRight" type="CPUParticles2D" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo"]
+z_index = 1
+position = Vector2(289.5, 235.5)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.2
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+hue_variation_curve = ExtResource("10_ubah8")
+
+[node name="RarityLeft" type="CPUParticles2D" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo"]
+z_index = 1
+position = Vector2(-2.9375, 237.625)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.2
+direction = Vector2(-1, 0)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+hue_variation_curve = ExtResource("10_ubah8")
+
+[node name="ShadowContainer3" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("4_1w2kp")
+
+[node name="ItemThree" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_qdcho")
+script = ExtResource("3_vkkf2")
+ItemBuffStyle = ExtResource("3_qdcho")
+ItemHoverStyle = ExtResource("5_lcgmp")
+ItemBuffPressedStyle = ExtResource("4_tnf70")
+item = ExtResource("6_2ycdi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree"]
+layout_mode = 2
+
+[node name="BuffSprite" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+texture = ExtResource("3_gj4un")
+stretch_mode = 3
+
+[node name="BuffNameLabel" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree/VBoxContainer"]
+layout_mode = 2
+text = "NAME"
+
+[node name="BuffDescriptionLabel" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Description of the item that is currently being displayed"
+autowrap_mode = 2
+
+[node name="RarityRight" type="CPUParticles2D" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree"]
+z_index = 1
+position = Vector2(283.5, 231.5)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.2
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+hue_variation_curve = ExtResource("10_ubah8")
+
+[node name="RarityLeft" type="CPUParticles2D" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree"]
+z_index = 1
+position = Vector2(-2.9375, 237.625)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.2
+direction = Vector2(-1, 0)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+hue_variation_curve = ExtResource("10_ubah8")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ItemOneReroll" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_qdcho")
+script = ExtResource("11_h3v4m")
+ItemBuffStyle = ExtResource("3_qdcho")
+ItemHoverStyle = ExtResource("5_lcgmp")
+ItemPressedStyle = ExtResource("4_tnf70")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_ngx76")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll/HBoxContainer"]
+layout_mode = 2
+text = "Reroll"
+
+[node name="ItemTwoReroll" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_qdcho")
+script = ExtResource("13_tnf70")
+ItemBuffStyle = ExtResource("3_qdcho")
+ItemHoverStyle = ExtResource("5_lcgmp")
+ItemPressedStyle = ExtResource("4_tnf70")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_ngx76")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll/HBoxContainer"]
+layout_mode = 2
+text = "Reroll"
+
+[node name="ItemThreeReroll" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_qdcho")
+script = ExtResource("14_tnf70")
+ItemBuffStyle = ExtResource("3_qdcho")
+ItemHoverStyle = ExtResource("5_lcgmp")
+ItemPressedStyle = ExtResource("4_tnf70")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_ngx76")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll/HBoxContainer"]
+layout_mode = 2
+text = "Reroll"
+
+[connection signal="visibility_changed" from="." to="." method="OnScreenVisibilityChanged"]
+[connection signal="gui_input" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne" method="OnBuffChoose"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne" method="OnMouseHover"]
+[connection signal="mouse_exited" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer/ItemOne" method="OnMouseLeave"]
+[connection signal="gui_input" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo" method="OnBuffChoose"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo" method="OnMouseHover"]
+[connection signal="mouse_exited" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer2/ItemTwo" method="OnMouseLeave"]
+[connection signal="gui_input" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree" method="OnBuffChoose"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree" method="OnMouseHover"]
+[connection signal="mouse_exited" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/ShadowContainer3/ItemThree" method="OnMouseLeave"]
+[connection signal="gui_input" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll" method="OnBuffChoose"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll" method="OnMouseHover"]
+[connection signal="mouse_exited" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemOneReroll" method="OnMouseLeave"]
+[connection signal="gui_input" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll" method="OnBuffChoose"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll" method="OnMouseHover"]
+[connection signal="mouse_exited" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemTwoReroll" method="OnMouseLeave"]
+[connection signal="gui_input" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll" method="OnBuffChoose"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll" method="OnMouseHover"]
+[connection signal="mouse_exited" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll" to="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/ItemThreeReroll" method="OnMouseLeave"]

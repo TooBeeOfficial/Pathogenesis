@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TrackingBullets" load_steps=3 format=3 uid="uid://cgjns06neuxer"]
+
+[ext_resource type="Texture2D" uid="uid://ckverr1orge7c" path="res://Assets/Food/PNG/shadow/10.png" id="1_fkc8h"]
+[ext_resource type="Script" uid="uid://delqrmwhaph3s" path="res://Items/BulletBuffItems/BuffScripts/TrackingBulletEffect.gd" id="1_iyvko"]
+
+[resource]
+script = ExtResource("1_iyvko")
+ItemName = "Living Missile"
+ItemDescription = "Tracking Bullet and +0.05 Track Speed"
+ItemSprite = ExtResource("1_fkc8h")
+Rarity = 4
+metadata/_custom_type_script = "uid://chmafla78a05f"

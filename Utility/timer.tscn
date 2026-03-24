@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c25lctsweesgg"]
+
+[ext_resource type="Script" uid="uid://ce164yu74p8vi" path="res://Utility/Scripts/TimerCountLimit.gd" id="1_c74gx"]
+
+[node name="Timer" type="Timer"]
+script = ExtResource("1_c74gx")
+
+[connection signal="timeout" from="." to="." method="TimerIncrementCount"]

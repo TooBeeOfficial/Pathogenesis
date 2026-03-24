@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://boeq3jdnvjkdy"]
+
+[ext_resource type="PackedScene" uid="uid://cvincm84v2d77" path="res://Enemies/EnemyBase.tscn" id="1_i7qcs"]
+[ext_resource type="Shader" uid="uid://bsc2vhimvvevu" path="res://Shaders/HitEffect.gdshader" id="2_l51tk"]
+[ext_resource type="Resource" uid="uid://1kdae1rddgx6" path="res://Enemies/EnemyStats/Swarmling.tres" id="2_ntx0h"]
+[ext_resource type="Texture2D" uid="uid://cu3ghb15qcq3y" path="res://Assets/Enemy/Swarm.svg" id="3_ntx0h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ohpw"]
+resource_local_to_scene = true
+shader = ExtResource("2_l51tk")
+shader_parameter/active = false
+shader_parameter/Tint = Vector3(1, 0, 0)
+
+[node name="EnemyBase" instance=ExtResource("1_i7qcs")]
+BaseCombat = ExtResource("2_ntx0h")
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_3ohpw")
+scale = Vector2(1.2910798, 1.2910798)
+texture = ExtResource("3_ntx0h")
+
+[node name="CollisionShape2D" parent="." index="1"]
+scale = Vector2(0.34356594, 0.34356594)
+
+[node name="BulletSpawnLocation" type="Node2D" parent="." index="6"]
+position = Vector2(4.0442257, 0)
+scale = Vector2(0.92199874, 1.4012107)

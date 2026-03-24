@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bd3q5yl8623rw"]
+
+[ext_resource type="Texture2D" uid="uid://cr7x7tjlsfikl" path="res://Assets/Food/PNG/shadow/15.png" id="1_6aijj"]
+[ext_resource type="Script" uid="uid://bin6y41gfkjgw" path="res://Items/BulletBuffItems/BuffScripts/BulletDamage1.gd" id="2_gwbc8"]
+
+[resource]
+script = ExtResource("2_gwbc8")
+damage = 0.5
+ItemName = "Minor Mutation"
+ItemDescription = "+0.5 Damage"
+ItemSprite = ExtResource("1_6aijj")
+Rarity = 1
+metadata/_custom_type_script = "uid://chmafla78a05f"
