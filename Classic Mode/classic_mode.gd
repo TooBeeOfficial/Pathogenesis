@@ -3,6 +3,7 @@ extends Node
 @onready var obstacle_spawner = $ObstacleSpawner
 @onready var wall_tile_map = $WallTileMap
 var foodSpawner = preload("res://Scenes/FoodSpawner.tscn")
+var enemySpawner = preload("res://Scenes/EnemySpawner.tscn")
 
 func _ready() -> void:
 	obstacle_spawner.connect("GeneratedNoise",OnFinishNoise)
@@ -26,5 +27,8 @@ func OnFinishWallPlacement():
 		print("Spawned Food Source: ", foodSpawnerPos)
 	
 	for enemySpawnerPos in wall_tile_map.getEnemySpawnerPositions():
+		var newEnemySpawner = enemySpawner.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+		(newEnemySpawner as EnemySpawner).global_position = enemySpawnerPos
+		add_sibling.call_deferred(newEnemySpawner)
 		print("Spawned Enemy Base: ", enemySpawnerPos)
 	pass

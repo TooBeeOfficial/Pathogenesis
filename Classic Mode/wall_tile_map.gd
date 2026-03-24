@@ -100,7 +100,7 @@ func getFoodSpawnerPositions():
 
 func getEnemySpawnerPositions():
 	var globalEnemySpawnerPositions = []
-	for pos in foodSpawnLocations:
+	for pos in enemySpawnerLocations:
 		var globalEnemySpawnerPosition = map_to_local(pos)
 		globalEnemySpawnerPositions.append(to_global(globalEnemySpawnerPosition))
 	return globalEnemySpawnerPositions

@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		currentState.Update(delta)
 
 func _physics_process(delta: float) -> void:
-	if currentState.attachedEnemy.BaseCombat.health <= 0:
+	if currentState.attachedEnemy and currentState.attachedEnemy.BaseCombat.health <= 0:
 		return
 	if currentState:
 		currentState.PhysicsUpdate(delta)

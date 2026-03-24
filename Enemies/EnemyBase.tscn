@@ -1,9 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://cvincm84v2d77"]
+[gd_scene format=3 uid="uid://cvincm84v2d77"]
 
 [ext_resource type="Script" uid="uid://bada2tg8yh8tn" path="res://Scripts/enemy_base.gd" id="1_jaifj"]
-[ext_resource type="Script" uid="uid://c4q1k4wmt0b25" path="res://Enemies/EnemyScripts/EnemyCombatunctionality.gd" id="2_lol7t"]
-[ext_resource type="PackedScene" uid="uid://bggy2g423883a" path="res://Bullets/BaseBullet.tscn" id="2_x18kb"]
-[ext_resource type="Script" uid="uid://2o1g4i5r3s4r" path="res://Items/Default/PlayerBuff.gd" id="3_73wjf"]
 [ext_resource type="Shader" uid="uid://bsc2vhimvvevu" path="res://Shaders/HitEffect.gdshader" id="3_d3qlt"]
 [ext_resource type="Texture2D" uid="uid://btxt2l2x66l1r" path="res://Assets/Enemy/Untitled8_20250530050939.png" id="4_ihd1l"]
 [ext_resource type="Texture2D" uid="uid://bh8vqyoee33br" path="res://Assets/Enemy/EnemyBase.svg" id="5_anohl"]
@@ -13,12 +10,6 @@
 [ext_resource type="Script" uid="uid://dacl3rh4c7d8f" path="res://Enemies/State Machine/follow.gd" id="9_anohl"]
 [ext_resource type="Script" uid="uid://dg3j4dumh4jht" path="res://Enemies/State Machine/shoot.gd" id="10_uvaen"]
 [ext_resource type="Script" uid="uid://c8ghg7j8luvhq" path="res://Enemies/State Machine/death.gd" id="12_o7klo"]
-
-[sub_resource type="Resource" id="Resource_k210i"]
-script = ExtResource("2_lol7t")
-fireRate = 1.0
-bulletScene = ExtResource("2_x18kb")
-metadata/_custom_type_script = "uid://c4q1k4wmt0b25"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d3qlt"]
 resource_local_to_scene = true
@@ -107,24 +98,23 @@ _data = {
 &"RESET": SubResource("Animation_anohl")
 }
 
-[node name="EnemyBase" type="CharacterBody2D"]
+[node name="EnemyBase" type="CharacterBody2D" unique_id=1067049342]
 z_index = 1
 collision_layer = 2
 collision_mask = 23
 script = ExtResource("1_jaifj")
-BaseCombat = SubResource("Resource_k210i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267620213]
 material = SubResource("ShaderMaterial_d3qlt")
 scale = Vector2(0.82355577, 0.82355577)
 texture = ExtResource("5_anohl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314130547]
 rotation = 1.57079
 scale = Vector2(0.629131, 0.629131)
 shape = SubResource("CapsuleShape2D_ihd1l")
 
-[node name="HitParticle" type="CPUParticles2D" parent="."]
+[node name="HitParticle" type="CPUParticles2D" parent="." unique_id=310491471]
 material = SubResource("CanvasItemMaterial_ygec5")
 emitting = false
 amount = 15
@@ -153,35 +143,33 @@ hue_variation_min = 0.97
 hue_variation_max = 0.97
 anim_speed_max = 1.0
 
-[node name="BurnEffect" parent="." instance=ExtResource("5_x1af1")]
+[node name="BurnEffect" parent="." unique_id=345198355 instance=ExtResource("5_x1af1")]
 position = Vector2(-1.0000038, -4.7683716e-07)
 rotation = -1.5460186
 scale = Vector2(0.19913483, 0.19913483)
 
-[node name="EnemyAnimations" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_uvaen")
-}
+[node name="EnemyAnimations" type="AnimationPlayer" parent="." unique_id=361253086]
+libraries/ = SubResource("AnimationLibrary_uvaen")
 
-[node name="FiniteStateMachineHandler" type="Node" parent="." node_paths=PackedStringArray("INIT_STATE")]
+[node name="FiniteStateMachineHandler" type="Node" parent="." unique_id=743073131 node_paths=PackedStringArray("INIT_STATE")]
 script = ExtResource("7_7vcpx")
 INIT_STATE = NodePath("IDLE")
 
-[node name="IDLE" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+[node name="IDLE" type="Node" parent="FiniteStateMachineHandler" unique_id=1147341052 node_paths=PackedStringArray("attachedEnemy")]
 script = ExtResource("8_rb56g")
 attachedEnemy = NodePath("../..")
 
-[node name="FOLLOW" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+[node name="FOLLOW" type="Node" parent="FiniteStateMachineHandler" unique_id=1953719937 node_paths=PackedStringArray("attachedEnemy")]
 script = ExtResource("9_anohl")
 stateEnum = 1
 attachedEnemy = NodePath("../..")
 
-[node name="SHOOT" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+[node name="SHOOT" type="Node" parent="FiniteStateMachineHandler" unique_id=1483420469 node_paths=PackedStringArray("attachedEnemy")]
 script = ExtResource("10_uvaen")
 stateEnum = 3
 attachedEnemy = NodePath("../..")
 
-[node name="DEATH" type="Node" parent="FiniteStateMachineHandler" node_paths=PackedStringArray("attachedEnemy")]
+[node name="DEATH" type="Node" parent="FiniteStateMachineHandler" unique_id=1627038432 node_paths=PackedStringArray("attachedEnemy")]
 script = ExtResource("12_o7klo")
 stateEnum = 5
 attachedEnemy = NodePath("../..")

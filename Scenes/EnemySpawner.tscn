@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bccbevdnc2dm1"]
+
+[ext_resource type="Texture2D" uid="uid://bsqi1x4ud1ee7" path="res://Assets/Location/Location.svg" id="1_4b1db"]
+[ext_resource type="Script" uid="uid://c2iirbcmrm86w" path="res://Scripts/enemySpawner.gd" id="1_4l853"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4l853"]
+radius = 50.01
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7cdh"]
+radius = 472.00107
+
+[node name="EnemySpawner" type="StaticBody2D" unique_id=1351925239]
+script = ExtResource("1_4l853")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1835470214]
+shape = SubResource("CircleShape2D_4l853")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1837985258]
+texture = ExtResource("1_4b1db")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=200915084]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=263478854]
+shape = SubResource("CircleShape2D_u7cdh")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="onPlayerEntered"]

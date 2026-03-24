@@ -89,7 +89,6 @@ func _stop_pulsing(resetScale:bool):
 func IncrementPortalSpawnPercent(amount):
 	emit_signal("PlayerAteFood")
 	portalSpawnPercent += amount
-	print_debug(portalSpawnPercent)
 	GameSfx.playPlayerAteFood()
 	# max portal amount cant exceed threshold
 	# once it exceeds spawn portal and keep exceeding amount
@@ -108,7 +107,6 @@ func IncrementPortalSpawnPercent(amount):
 		# instead of root scene
 		newPosition += global_position
 		newLocation.global_position = newPosition
-		# Used call defer to fix error: "Can't change this state while flushing queries"
 		call_deferred("add_sibling", newLocation)
 		OpenBuffMenu.emit(false)
 

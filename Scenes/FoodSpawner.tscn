@@ -10,6 +10,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_y5itk"]
 radius = 34.0588
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_khkdo"]
+radius = 308.05957
+
 [node name="FoodSpawner" type="StaticBody2D" unique_id=792506328]
 scale = Vector2(1.9996239, 1.9996239)
 collision_layer = 16
@@ -25,3 +28,10 @@ shape = SubResource("CircleShape2D_y5itk")
 position = Vector2(5.684342e-14, 0.9999999)
 scale = Vector2(0.6996973, 0.6996973)
 texture = ExtResource("3_sxc0y")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1711149459]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1682399619]
+shape = SubResource("CircleShape2D_khkdo")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="onPlayerEntered"]
