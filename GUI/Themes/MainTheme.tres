@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bdscallsxjydj"]
+[gd_resource type="Theme" format=3 uid="uid://bdscallsxjydj"]
 
 [ext_resource type="FontFile" uid="uid://dh8l0yh11m03k" path="res://Assets/TrueType (.ttf)/FreeCheese-Regular.ttf" id="1_tgpcq"]
 [ext_resource type="Texture2D" uid="uid://csbesxp7c8f8r" path="res://Assets/GUI/Game UI Button.svg" id="2_y6kab"]

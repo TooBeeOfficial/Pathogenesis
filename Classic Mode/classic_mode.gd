@@ -1,15 +1,7 @@
 extends Node
 
 @onready var obstacle_spawner: Node2D = $ObstacleSpawner
-@onready var wall_tile_map: TileMapLayer = $WallTileMap
-var playerSpawnPosition:Vector2i = Vector2i(0,0)
-var foodSpawnLocations:Array[Vector2i] = []
-var enemySpawnerLocations:Array[Vector2i] = []
-
-# used to reduce iterations for spawning stuff
-const MAP_LOWER_LIMIT = 3
-const MAP_UPPER_LIMIT = 97
-
+@onready var wall_tile_map = $WallTileMap
 func _ready() -> void:
 	obstacle_spawner.connect("GeneratedNoise",OnFinishNoise)
 	wall_tile_map.connect("FinishedPlacingTiles", OnFinishWallPlacement)
@@ -21,16 +13,10 @@ func OnFinishNoise():
 	wall_tile_map.PlaceTiles()
 
 func OnFinishWallPlacement():
-	var isPlayerSpawnable = false
-	var usedCells:Array[Vector2i] = wall_tile_map.get_used_cells()
-	var tempX = 0
-	var tempY = 0
-	while !isPlayerSpawnable:
-		if usedCells.find(playerSpawnPosition) != -1:
-			tempX = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
-			tempY = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
-			playerSpawnPosition = Vector2i(tempX,tempY)
-		else:
-			isPlayerSpawnable = true
-	print_debug(playerSpawnPosition)
+	var player = (get_tree().get_first_node_in_group("Player") as Player)
+	if player:
+		player.global_position = wall_tile_map.getPlayerSpawnPosition()
+	
+	for foodSpawnerPos in wall_tile_map.getFoodSpawnerPositions():
+		print("Spawned: ", foodSpawnerPos)
 	pass

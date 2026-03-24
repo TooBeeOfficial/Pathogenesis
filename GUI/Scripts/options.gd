@@ -82,8 +82,10 @@ func SetWindowMode(index:int):
 		0:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 			ResolutionChanged(ResolutionOptions.selected)
+			print_debug("fullscreen")
 		1:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			print_debug("windowed")
 			ResolutionChanged(ResolutionOptions.selected)
 
 func MasterAdjustVolume(value:float):

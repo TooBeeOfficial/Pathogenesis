@@ -111,5 +111,6 @@ func CloseOutMap():
 		if col < 2 or col >= width - 2:
 			colors[i] = Color.WHITE
 
-func getSpawnableCellCoordinates():
+func setPlayerSpawnPoint():
+	
 	pass
