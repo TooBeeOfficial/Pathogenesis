@@ -20,9 +20,11 @@ func OnDeath():
 	HitCPU_Particle.emitting = true
 	await  HitCPU_Particle.finished
 	var newFood = (FoodScene.instantiate() as Food)
+	newFood.portalFuelmount = ceili(BaseCombat.MaxHealth / 100)
 	add_sibling(newFood)
+	newFood.global_position = global_position
 	newFood.foodColor = Color.from_rgba8(100,0,0,255)
-	newFood.portalFuelmount = BaseCombat.MaxHealth / 100
+	print_debug("ENEMY FOOD DROP: ",newFood.portalFuelmount)
 	newFood.UpdateColors()
 	queue_free()
 

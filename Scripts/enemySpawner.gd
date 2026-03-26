@@ -14,15 +14,27 @@ var isPlayerInArea = false
 @export var minScale = 1.9
 @export var maxScale = 2.1
 
+# to indicate what enemies we can spawn
+var wave = 0
+
 const MAXIMUM_ENEMY_SPAWN = 10
 const BASE_SCALE = 2
 
 func _ready() -> void:
 	rotation = randf_range(0,360)
 
+func setWave(newWave:int):
+	wave = newWave
+
 func onPlayerEntered(body):
 	if body is Player:
 		isPlayerInArea = true
+
+func pickRandomEnemy():
+	var randomEnemy = Enemies.enemies.pick_random().duplicate_deep(Resource.DEEP_DUPLICATE_ALL).instantiate()
+	while (randomEnemy as Enemy).BaseCombat.EnemySpawnWave > wave:
+		randomEnemy = Enemies.enemies.pick_random().duplicate_deep(Resource.DEEP_DUPLICATE_ALL).instantiate()
+	return randomEnemy
 
 func _process(delta: float) -> void:
 	if isPlayerInArea:
@@ -35,7 +47,8 @@ func _process(delta: float) -> void:
 			time_elapsed = 0
 			scale = Vector2(lerpf(BASE_SCALE,maxScale,time_elapsed),lerpf(BASE_SCALE,maxScale,time_elapsed))
 			# spawn enemy
-			var newEnemyFromList = Enemies.enemies.pick_random().duplicate_deep(Resource.DEEP_DUPLICATE_ALL).instantiate()
+			var newEnemyFromList = pickRandomEnemy()
+			print_debug((newEnemyFromList as Enemy).BaseCombat.EnemySpawnWave)
 			var spawnPosition = Vector2(randi_range(SpawnRadius * -1 ,SpawnRadius),randi_range(SpawnRadius * -1,SpawnRadius))
 			# Clamp minimum values for negative and positive to -25 and 25 respectively
 			# to prevent enemy spawning inside the spawner
