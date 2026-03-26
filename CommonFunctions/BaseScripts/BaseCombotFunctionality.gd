@@ -20,13 +20,21 @@ var bulletUpgrades:Array[BaseItem] = []
 var isHittable = true
 var isBurning = false
 
+# max = maximum damage reduction
+# EX. 0.3 = 70 % max damage reduction
+const MAX_ARMOR_REDUCTION = 0.3
+const MIN_ARMOR_REDUCTION = 1
+
 func Heal(healAmount:float):
 	health = clampf(health + healAmount,-1,MaxHealth)
+
+func takeDamageWithArmor(DamageTaken):
+	return clampf(100 / (100 + armor),MAX_ARMOR_REDUCTION, MIN_ARMOR_REDUCTION) * DamageTaken
 
 func TakeDamage(amount: int, character:Node2D):
 	# if character doesnt eyeframes
 	if isHittable == true:
-		health -= amount
+		health -= takeDamageWithArmor(amount)
 		# only player will have eye frames
 		if character is Player:
 			isHittable = false
