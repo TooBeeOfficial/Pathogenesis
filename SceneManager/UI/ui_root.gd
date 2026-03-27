@@ -16,6 +16,6 @@ func DisplayOptions():
 	$Options.visible = true
 
 func MainMenuVisibility(visible:bool):
-	print_debug("MAIN MENU VISIBILITY = ", visible)
+	# print_debug("MAIN MENU VISIBILITY = ", visible)
 	$MainMenu.visible = visible
 	get_tree().paused = visible

@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 			scale = Vector2(lerpf(BASE_SCALE,maxScale,time_elapsed),lerpf(BASE_SCALE,maxScale,time_elapsed))
 			# spawn enemy
 			var newEnemyFromList = pickRandomEnemy()
-			print_debug((newEnemyFromList as Enemy).BaseCombat.EnemySpawnWave)
+			# print_debug((newEnemyFromList as Enemy).BaseCombat.EnemySpawnWave)
 			var spawnPosition = Vector2(randi_range(SpawnRadius * -1 ,SpawnRadius),randi_range(SpawnRadius * -1,SpawnRadius))
 			# Clamp minimum values for negative and positive to -25 and 25 respectively
 			# to prevent enemy spawning inside the spawner

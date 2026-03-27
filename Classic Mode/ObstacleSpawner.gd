@@ -33,8 +33,8 @@ func GenerateAndClean():
 	generateNoise()
 	CloseOutMap()
 	keep_biggest_island()
-	printColors()
-	getPlayableArea()
+	# printColors()
+	# getPlayableArea()
 
 func printColors():
 	var map = ""
@@ -60,7 +60,7 @@ func getPlayableArea():
 	for cell in colors:
 		if cell == Color.BLACK:
 			tempSize += 1
-	print_debug(tempSize)
+	# print_debug(tempSize)
 	return tempSize
 
 func flood_fill(start: int) -> Array:

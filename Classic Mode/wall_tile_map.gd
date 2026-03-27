@@ -56,7 +56,7 @@ func setFoodSpawnerLocations():
 	var tempY = 0
 	var currentFoodIndex = 0
 	var foodPerArea = (MaxFoodSpawners/ObjectPerArea) * playableArea
-	print_debug(roundi(foodPerArea))
+	#print_debug(roundi(foodPerArea))
 	while roundi(foodPerArea) != currentFoodIndex:
 		if usedCells.find(foodLocation) != -1 and !foodSpawnLocations.has(foodLocation) and !enemySpawnerLocations.has(foodLocation):
 			tempX = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
@@ -66,7 +66,7 @@ func setFoodSpawnerLocations():
 			foodSpawnLocations.append(foodLocation)
 			foodLocation = Vector2i.ZERO
 			currentFoodIndex += 1
-	print_debug(foodSpawnLocations)
+	#print_debug(foodSpawnLocations)
 
 func setEnemySpawnerLocations():
 	var enemySpawnerLocation = Vector2i(0,0)
@@ -75,7 +75,7 @@ func setEnemySpawnerLocations():
 	var tempY = 0
 	var currentFoodIndex = 0
 	var enemyPerArea = (MaxEnemySpawners/ObjectPerArea) * playableArea
-	print_debug(roundi(enemyPerArea))
+	#print_debug(roundi(enemyPerArea))
 	while roundi(enemyPerArea) != currentFoodIndex:
 		if usedCells.find(enemySpawnerLocation) != -1 and !enemySpawnerLocations.has(enemySpawnerLocation) and !foodSpawnLocations.has(enemySpawnerLocation):
 			tempX = randi_range(MAP_LOWER_LIMIT,MAP_UPPER_LIMIT)
@@ -85,7 +85,7 @@ func setEnemySpawnerLocations():
 			enemySpawnerLocations.append(enemySpawnerLocation)
 			enemySpawnerLocation = Vector2i.ZERO
 			currentFoodIndex += 1
-	print_debug(enemySpawnerLocations)
+	#print_debug(enemySpawnerLocations)
 
 func getPlayerSpawnPosition():
 	var globalPlayerPosition = map_to_local(playerSpawnPosition)

@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckva2dxlxcx2w"]
+[gd_scene format=3 uid="uid://ckva2dxlxcx2w"]
 
 [ext_resource type="Script" uid="uid://dbmq3rnqw5s5j" path="res://SceneManager/UI/ui_root.gd" id="1_o5b8t"]
 [ext_resource type="PackedScene" uid="uid://dgb1ysxhuuvuw" path="res://GUI/MainMenu.tscn" id="1_ue6e7"]
 [ext_resource type="PackedScene" uid="uid://bkjfppjvlnabc" path="res://GUI/Options.tscn" id="3_o5b8t"]
 
-[node name="UiRoot" type="Node"]
+[node name="UiRoot" type="Node" unique_id=529973548]
 process_mode = 3
 script = ExtResource("1_o5b8t")
 
-[node name="MainMenu" parent="." instance=ExtResource("1_ue6e7")]
+[node name="MainMenu" parent="." unique_id=1770407756 instance=ExtResource("1_ue6e7")]
 visible = false
 follow_viewport_enabled = false
 
-[node name="Options" parent="." instance=ExtResource("3_o5b8t")]
+[node name="Options" parent="." unique_id=995723593 instance=ExtResource("3_o5b8t")]
 visible = false

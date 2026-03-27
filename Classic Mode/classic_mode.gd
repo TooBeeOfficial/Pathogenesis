@@ -25,14 +25,14 @@ func OnFinishWallPlacement():
 		var newFoodSpawner = foodSpawner.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		(newFoodSpawner as FoodSpawner).global_position = foodSpawnerPos
 		add_sibling.call_deferred(newFoodSpawner)
-		print("Spawned Food Source: ", foodSpawnerPos)
+		# print("Spawned Food Source: ", foodSpawnerPos)
 	
 	for enemySpawnerPos in wall_tile_map.getEnemySpawnerPositions():
 		var newEnemySpawner = enemySpawner.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		(newEnemySpawner as EnemySpawner).global_position = enemySpawnerPos
 		(newEnemySpawner as EnemySpawner).setWave(wave)
 		add_sibling.call_deferred(newEnemySpawner)
-		print("Spawned Enemy Base: ", enemySpawnerPos)
+		# print("Spawned Enemy Base: ", enemySpawnerPos)
 	
 	increaseWave()
 
