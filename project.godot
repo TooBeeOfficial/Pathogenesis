@@ -43,6 +43,7 @@ ItemsList="*res://Items/ItemsList.gd"
 Enemies="*res://Enemies/EnemyList.gd"
 SignalNamesList="*res://Utility/SignalNames.gd"
 GameModeEnum="*res://Enums/GameModeEnum.gd"
+SignalManager="*uid://0x7v4b42iekq"
 
 [display]
 

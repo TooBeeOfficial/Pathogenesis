@@ -36,6 +36,7 @@ func OnBodyEneter(body: Node) -> void:
 		isEaten = true;
 		
 	if isEaten == true:
+		SignalManager.updateScore.emit(portalFuelmount * 5)
 		await get_tree().create_timer(FoodOnEatCPU_Particle.lifetime+.05).timeout
 		queue_free()
 

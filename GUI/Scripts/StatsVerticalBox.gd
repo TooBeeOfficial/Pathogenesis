@@ -6,6 +6,8 @@ var player
 var PlayerStatList:Array[LabelProperties] = []
 # the UI element to be dynamically added
 @onready var LabelScene:= preload("res://GUI/Stats.tscn")
+@onready var StatsBox = $HBoxContainer/VBoxContainer/Panel/MarginContainer/StatsVerticalBoxContainer
+@onready var Score = $HBoxContainer/Score
 
 # custom class for creating UI stat labels
 class LabelProperties:
@@ -52,15 +54,15 @@ func updateExistingStats():
 # adds updated stat label UI element
 func updateStats():
 	if !PlayerStatList.is_empty():
-		var children := $VBoxContainer/Panel/MarginContainer/StatsVerticalBoxContainer.get_children()
+		var children := StatsBox.get_children()
 		# clear children if not empty
 		if !children.is_empty():
 			for i in children:
 				# keep stats label
 				if !i.get_index() == 0:
-					$VBoxContainer/Panel/MarginContainer/StatsVerticalBoxContainer.remove_child(i)
+					StatsBox.remove_child(i)
 		for stat in PlayerStatList:
 			var temp := LabelScene.instantiate()
 			temp.StatName = stat.Name + " : " + str(snappedf(stat.Value,0.01))
 			temp.StatImage = stat.Sprite
-			$VBoxContainer/Panel/MarginContainer/StatsVerticalBoxContainer.add_child(temp)
+			StatsBox.add_child(temp)

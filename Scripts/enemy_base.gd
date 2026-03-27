@@ -11,6 +11,7 @@ class_name Enemy
 var FoodScene := load("res://Scenes/Food.tscn").duplicate(true)
 
 func OnDeath():
+	SignalManager.updateScore.emit(BaseCombat.MaxHealth * 2)
 	collision_mask = 0
 	collision_layer = 0
 	BurnEffectCPU_Particle.emitFlame(false)
@@ -24,7 +25,7 @@ func OnDeath():
 	add_sibling(newFood)
 	newFood.global_position = global_position
 	newFood.foodColor = Color.from_rgba8(100,0,0,255)
-	print_debug("ENEMY FOOD DROP: ",newFood.portalFuelmount)
+	# print_debug("ENEMY FOOD DROP: ",newFood.portalFuelmount)
 	newFood.UpdateColors()
 	queue_free()
 
