@@ -1,6 +1,5 @@
 extends StaticBody2D
 class_name FoodSpawner
-
 var currentFoodSpawned = 0
 # used for checking how much time has passed and if spawner needs to spawn food
 var time_elapsed = 0
@@ -9,7 +8,6 @@ var isPlayerInArea = false
 @export var SpawnRadius = 100
 @export var SpawnMargin = 50
 @export var FoodScene: PackedScene
-
 # Used for "animating" the food spawning animation
 @export var minScale = 1.9
 @export var maxScale = 2.1
@@ -31,10 +29,6 @@ func ExtractFoodColor()->Color:
 	var image:Image = foodSpawnerSprite.texture.get_image()
 	var color = image.get_pixel(randi_range(IMAGE_COLOR_MIN_VALUE,IMAGE_COLOR_MAX_VALUE),randi_range(IMAGE_COLOR_MIN_VALUE,IMAGE_COLOR_MAX_VALUE))
 	return color
-
-func onPlayerEntered(body):
-	if body is Player:
-		isPlayerInArea = true
 
 func _process(delta: float) -> void:
 	if isPlayerInArea:
@@ -71,3 +65,10 @@ func _process(delta: float) -> void:
 			# Destroy spawner
 			if self:
 				queue_free()
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	isPlayerInArea = true
+	$WaypointMarker.visible = false
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	$WaypointMarker.visible = true

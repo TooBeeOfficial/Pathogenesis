@@ -22,6 +22,7 @@ config/name_localized={
 "ko": "발병 기전",
 "zh_CN": "发病机制"
 }
+config/version="Beta 0.5"
 run/main_scene="uid://dx1cxndixgn5h"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"

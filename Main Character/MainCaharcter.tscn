@@ -90,8 +90,9 @@ shader_parameter/active = false
 shader_parameter/Tint = Vector3(1, 0, 0)
 
 [node name="Player" type="CharacterBody2D" unique_id=286977617 groups=["Player"]]
+z_index = 1
 scale = Vector2(2.5, 2.5)
-collision_mask = 27
+collision_mask = 11
 input_pickable = true
 script = ExtResource("1_ry1gm")
 BaseCombat = ExtResource("2_rqfi1")

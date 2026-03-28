@@ -163,7 +163,6 @@ func _physics_process(delta: float) -> void:
 	# 8 way movement
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	isMoving = !input_direction.is_zero_approx()
-
 	velocity = input_direction * BaseCombat.speed
 	# player looks at mouse for immersion
 	look_at(get_global_mouse_position())
