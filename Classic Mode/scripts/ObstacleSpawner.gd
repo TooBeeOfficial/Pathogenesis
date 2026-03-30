@@ -11,22 +11,27 @@ var visited := PackedByteArray()
 
 signal GeneratedNoise
 
-var currentMapSettings:MapGenerationSettings.MapSettings = MapGenerationSettings.mapList[MapGenerationSettings.mapNameList[2]]
+var currentMapSettings:MapGenerationSettings.MapSettings = MapGenerationSettings.mapList[MapGenerationSettings.mapNameList[0]]
 
 func _ready() -> void:
-	initializeNoiseParametres(currentMapSettings)
-	colors.resize(NoiseSize.x * NoiseSize.y)
-	visited.resize(colors.size())
-	visited.fill(0)
+	clearForNewMap()
 
 func initializeNoiseParametres(settings:MapGenerationSettings.MapSettings):
 	NoiseGenerator = settings.getFastNoise()
 
+func clearForNewMap():
+	if noiseImage:
+		noiseImage.clear_mipmaps()
+	colors.resize(NoiseSize.x * NoiseSize.y)
+	visited.resize(colors.size())
+	visited.fill(0)
+
 func GenerateAndClean():
+	initializeNoiseParametres(currentMapSettings)
 	generateNoise()
 	CloseOutMap()
 	keep_biggest_island()
-	printColors()
+	# printColors()
 	# getPlayableArea()
 
 func printColors():

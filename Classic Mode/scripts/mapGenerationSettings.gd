@@ -1,6 +1,12 @@
 extends Node
 
 class MapSettings:
+	var mapSettingName:
+		get: return mapSettingName
+		set(value): mapSettingName = value 
+	var mapSettingDescription:
+		get: return mapSettingDescription
+		set(value): mapSettingDescription = value 
 	var mapNoiseType:
 		get: return mapNoiseType
 		set(value): mapNoiseType = value
@@ -27,6 +33,8 @@ class MapSettings:
 		set(value): mapFractalLacunarity = value
 	
 	func _init(
+		Name := "NoName",
+		Description := "NoDescription",
 		NoiseType := FastNoiseLite.TYPE_SIMPLEX_SMOOTH,
 		Seed := randi_range(-10000, 10000),
 		Frequency := 0.05,
@@ -35,6 +43,8 @@ class MapSettings:
 		FractalGain := 0.5,
 		FractalLacunarity := 0.04
 	) -> void:
+		self.mapSettingName = Name
+		self.mapSettingDescription = Description
 		self.mapNoiseType = NoiseType
 		self.mapSeed = Seed
 		self.mapFrequency = Frequency
@@ -59,9 +69,12 @@ var mapNameList := ["big_map","med_map","small_map"]
 
 func _init() -> void:
 	mapList[mapNameList[0]] = MapSettings.new()
+	mapList[mapNameList[0]].mapSettingName = mapNameList[0]
 	
 	mapList[mapNameList[1]] = MapSettings.new()
 	mapList[mapNameList[1]].mapFrequency = .1
+	mapList[mapNameList[1]].mapSettingName = mapNameList[1]
 	
 	mapList[mapNameList[2]] = MapSettings.new()
 	mapList[mapNameList[2]].mapFrequency = .15
+	mapList[mapNameList[2]].mapSettingName = mapNameList[2]

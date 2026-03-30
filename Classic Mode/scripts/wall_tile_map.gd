@@ -15,7 +15,15 @@ const MaxFoodSpawners = 40.0
 const MaxEnemySpawners = 20.0
 const ObjectPerArea = 3000.0
 
-func PlaceTiles(newPlayableArea:int):
+func clearForNewMap(newObstacleMap:PackedColorArray):
+	obstacleMap = newObstacleMap
+	playerSpawnPosition = Vector2i.ZERO
+	foodSpawnLocations.clear()
+	enemySpawnerLocations.clear()
+	playableArea = 0
+
+func PlaceTiles(newPlayableArea:int, newObstacleMap:PackedColorArray):
+	clearForNewMap(newObstacleMap)
 	self.playableArea = newPlayableArea
 	var cells:Array[Vector2i] = []
 	var xCoordinate = 0

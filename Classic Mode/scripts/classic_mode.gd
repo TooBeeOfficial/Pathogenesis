@@ -9,12 +9,18 @@ var wave = 0
 func _ready() -> void:
 	obstacle_spawner.connect("GeneratedNoise",OnFinishNoise)
 	wall_tile_map.connect("FinishedPlacingTiles", OnFinishWallPlacement)
+	SignalManager.connect("generateNewMap",newClassicMap)
+	newClassicMap(MapGenerationSettings.mapList[MapGenerationSettings.mapNameList[0]])
+
+func newClassicMap(settings:MapGenerationSettings.MapSettings):
+	obstacle_spawner.clearForNewMap()
+	obstacle_spawner.currentMapSettings = settings
 	obstacle_spawner.GenerateAndClean()
 
 func OnFinishNoise():
 	wall_tile_map.obstacleMap = obstacle_spawner.colors
 	wall_tile_map.size = obstacle_spawner.NoiseSize
-	wall_tile_map.PlaceTiles(obstacle_spawner.getPlayableArea())
+	wall_tile_map.PlaceTiles(obstacle_spawner.getPlayableArea(),obstacle_spawner.colors)
 
 func OnFinishWallPlacement():
 	var player = (get_tree().get_first_node_in_group("Player") as Player)
