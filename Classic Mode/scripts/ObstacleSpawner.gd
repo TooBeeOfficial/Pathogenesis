@@ -11,29 +11,22 @@ var visited := PackedByteArray()
 
 signal GeneratedNoise
 
+var currentMapSettings:MapGenerationSettings.MapSettings = MapGenerationSettings.mapList[MapGenerationSettings.mapNameList[2]]
+
 func _ready() -> void:
-	initializeNoiseParametres()
+	initializeNoiseParametres(currentMapSettings)
 	colors.resize(NoiseSize.x * NoiseSize.y)
 	visited.resize(colors.size())
 	visited.fill(0)
 
-func initializeNoiseParametres():
-	NoiseGenerator.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
-	NoiseGenerator.seed = randi_range(-10000,10000)
-	# Smaller freq = bigger islands
-	NoiseGenerator.frequency = 0.05
-	NoiseGenerator.fractal_type = FastNoiseLite.FRACTAL_FBM
-	NoiseGenerator.fractal_octaves = 8
-	NoiseGenerator.fractal_gain = 0.5
-	# decreasing affects how connected they are
-	# works together with freq
-	NoiseGenerator.fractal_lacunarity = .04
+func initializeNoiseParametres(settings:MapGenerationSettings.MapSettings):
+	NoiseGenerator = settings.getFastNoise()
 
 func GenerateAndClean():
 	generateNoise()
 	CloseOutMap()
 	keep_biggest_island()
-	# printColors()
+	printColors()
 	# getPlayableArea()
 
 func printColors():
