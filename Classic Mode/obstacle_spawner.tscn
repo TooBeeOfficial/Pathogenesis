@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dib368l7s0bge"]
+[gd_scene format=3 uid="uid://dib368l7s0bge"]
 
-[ext_resource type="Script" uid="uid://cermp1ng3gkt0" path="res://Classic Mode/ObstacleSpawner.gd" id="1_b76vk"]
+[ext_resource type="Script" uid="uid://cermp1ng3gkt0" path="res://Classic Mode/scripts/ObstacleSpawner.gd" id="1_b76vk"]
 
-[node name="ObstacleSpawner" type="Node2D"]
+[node name="ObstacleSpawner" type="Node2D" unique_id=1331844114]
 script = ExtResource("1_b76vk")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d130o2gimwf3w"]
+[gd_scene format=3 uid="uid://d130o2gimwf3w"]
 
 [ext_resource type="Script" uid="uid://mxqel7d8rtrw" path="res://Scripts/LocationScript.gd" id="1_i14ia"]
 [ext_resource type="Shader" uid="uid://fs0i81o1u8e" path="res://Shaders/LocationPortal.gdshader" id="2_3uksl"]
 [ext_resource type="Texture2D" uid="uid://by8mvsbngf8u3" path="res://Assets/Location/Location (1).svg" id="3_i14ia"]
+[ext_resource type="Texture2D" uid="uid://dkm4m31fdimvn" path="res://Assets/GUI/MenuBoxScaled.svg" id="4_3uksl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oikk4"]
 shader = ExtResource("2_3uksl")
@@ -18,20 +19,44 @@ shader_parameter/rotation_speed = 1.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fm1r"]
 radius = 81.1542
 
-[node name="Location" type="Node2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1cqvq"]
+texture = ExtResource("4_3uksl")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[node name="Location" type="Node2D" unique_id=1349684506]
 script = ExtResource("1_i14ia")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1750644826]
 material = SubResource("ShaderMaterial_oikk4")
 position = Vector2(0, -3)
 scale = Vector2(1.410096, 1.5304099)
 texture = ExtResource("3_i14ia")
 offset = Vector2(1.07677815e-05, -0.0033130646)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=85146072]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=295790119]
 shape = SubResource("CircleShape2D_1fm1r")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Panel" type="Panel" parent="." unique_id=373164434]
+offset_left = 82.0
+offset_top = -68.0
+offset_right = 208.0
+offset_bottom = -9.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_1cqvq")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1484397707]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Portal"
+horizontal_alignment = 1
+vertical_alignment = 1

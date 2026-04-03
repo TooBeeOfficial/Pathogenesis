@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://g8icetv8hr5g" path="res://Assets/Food/FruitRed.svg" id="4_i3n1p"]
 [ext_resource type="Texture2D" uid="uid://d3wohuh6ephou" path="res://Assets/Food/FruitPurple.svg" id="5_q5bga"]
 [ext_resource type="Texture2D" uid="uid://bhypjiwod2xf4" path="res://Assets/Food/FruitBlue.svg" id="6_nkjq0"]
+[ext_resource type="PackedScene" uid="uid://trwgh068ps75" path="res://WaypointMarker/waypoint_marker.tscn" id="7_sxc0y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y5itk"]
 radius = 34.0588
@@ -16,7 +17,7 @@ radius = 308.05957
 [node name="FoodSpawner" type="StaticBody2D" unique_id=792506328]
 scale = Vector2(1.9996239, 1.9996239)
 collision_layer = 16
-collision_mask = 31
+collision_mask = 28
 script = ExtResource("1_y5itk")
 FoodScene = ExtResource("2_k0cp1")
 foodList = Array[Texture]([ExtResource("3_sxc0y"), ExtResource("4_i3n1p"), ExtResource("5_q5bga"), ExtResource("6_nkjq0")])
@@ -34,4 +35,11 @@ texture = ExtResource("3_sxc0y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1682399619]
 shape = SubResource("CircleShape2D_khkdo")
 
+[node name="WaypointMarker" parent="." unique_id=1540658384 instance=ExtResource("7_sxc0y")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=133431782]
+rect = Rect2(-25, -25, 50, 50)
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="onPlayerEntered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

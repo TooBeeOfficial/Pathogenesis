@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfvtcxwbxabl"]
+[gd_scene format=3 uid="uid://cfvtcxwbxabl"]
 
 [ext_resource type="Texture2D" uid="uid://d3qdn744eeeh2" path="res://Assets/ClassicMode/Untitled.png" id="1_8wnab"]
-[ext_resource type="Script" uid="uid://dv247bs1gbs7v" path="res://Classic Mode/wall_tile_map.gd" id="1_reg7t"]
+[ext_resource type="Script" uid="uid://dv247bs1gbs7v" path="res://Classic Mode/scripts/wall_tile_map.gd" id="1_reg7t"]
 [ext_resource type="Texture2D" uid="uid://nlqmno5s3xcj" path="res://Assets/ClassicMode/grass Edge.png" id="2_whemt"]
 [ext_resource type="Texture2D" uid="uid://bcefc1ymwe5jx" path="res://Assets/ClassicMode/grass corner.png" id="3_j32vh"]
 
@@ -100,6 +100,6 @@ sources/0 = SubResource("TileSetAtlasSource_whemt")
 sources/1 = SubResource("TileSetAtlasSource_j32vh")
 sources/2 = SubResource("TileSetAtlasSource_ymimn")
 
-[node name="WallTileMap" type="TileMapLayer"]
+[node name="WallTileMap" type="TileMapLayer" unique_id=121477550]
 tile_set = SubResource("TileSet_8wnab")
 script = ExtResource("1_reg7t")

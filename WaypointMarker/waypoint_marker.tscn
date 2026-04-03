@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://trwgh068ps75"]
+
+[ext_resource type="Script" uid="uid://d3q2x8bb25yy" path="res://WaypointMarker/waypoint_marker.gd" id="1_0kqch"]
+[ext_resource type="Texture2D" uid="uid://c4i8oxwfixrmn" path="res://WaypointMarker/pngimg.com - red_arrow_PNG1.png" id="2_0kqch"]
+
+[node name="WaypointMarker" type="Sprite2D" unique_id=375736048]
+z_index = 4096
+scale = Vector2(0.011007974, 0.011007974)
+texture = ExtResource("2_0kqch")
+script = ExtResource("1_0kqch")

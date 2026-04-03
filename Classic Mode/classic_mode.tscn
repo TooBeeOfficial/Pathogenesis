@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://caalv26dnrnbn"]
 
-[ext_resource type="Script" uid="uid://bu4smjm4k1cuf" path="res://Classic Mode/classic_mode.gd" id="1_io675"]
+[ext_resource type="Script" uid="uid://bu4smjm4k1cuf" path="res://Classic Mode/scripts/classic_mode.gd" id="1_io675"]
 [ext_resource type="PackedScene" uid="uid://dib368l7s0bge" path="res://Classic Mode/obstacle_spawner.tscn" id="1_s0xf5"]
 [ext_resource type="PackedScene" uid="uid://cfvtcxwbxabl" path="res://Classic Mode/wall_tile_map.tscn" id="2_cjmsd"]
 
