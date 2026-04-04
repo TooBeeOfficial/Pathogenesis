@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgb1ysxhuuvuw"]
+[gd_scene format=3 uid="uid://dgb1ysxhuuvuw"]
 
 [ext_resource type="Theme" uid="uid://bdscallsxjydj" path="res://GUI/Themes/MainTheme.tres" id="1_xskdj"]
 [ext_resource type="Texture2D" uid="uid://dmcagxmfdbc34" path="res://Assets/GUI/MainMenu/MainMenuBG.svg" id="2_k4wbt"]
@@ -89,11 +89,11 @@ shader_parameter/wave_strength = 2.000000095
 shader_parameter/wave_frequency = 5.0000002375
 shader_parameter/wave_speed = 2.000000095
 
-[node name="MainMenu" type="CanvasLayer"]
+[node name="MainMenu" type="CanvasLayer" unique_id=1682005008]
 process_mode = 3
 follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1784504050]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,7 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xskdj")
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=115499340]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,12 +111,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_kyyyq")
 
-[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer" unique_id=1277395107]
 layout_mode = 2
 expand_mode = 5
 stretch_mode = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer/TextureRect"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer/TextureRect" unique_id=162074303]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 1
 anchors_preset = 6
@@ -132,39 +132,39 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("3_kyyyq")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/TextureRect/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/TextureRect/PanelContainer" unique_id=557355044]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer" unique_id=1527165670]
 layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="New Game Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+[node name="New Game Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=544742329 instance=ExtResource("4_j2b6q")]
 layout_mode = 2
 script = SubResource("GDScript_j2b6q")
 buttonName = "New Game"
 
-[node name="Continue Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+[node name="Continue Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=560823570 instance=ExtResource("4_j2b6q")]
 layout_mode = 2
 script = SubResource("GDScript_kyyyq")
 buttonName = "Continue"
 
-[node name="Options Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+[node name="Options Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=627300107 instance=ExtResource("4_j2b6q")]
 layout_mode = 2
 script = SubResource("GDScript_k4wbt")
 buttonName = "Options"
 
-[node name="Quit Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_j2b6q")]
+[node name="Quit Button" parent="Control/PanelContainer/TextureRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=586835317 instance=ExtResource("4_j2b6q")]
 layout_mode = 2
 script = SubResource("GDScript_i54pe")
 buttonName = "Quit"
 
-[node name="Decorations" type="Control" parent="."]
+[node name="Decorations" type="Control" parent="." unique_id=463718065]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -174,7 +174,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="LeftPortal" type="TextureRect" parent="Decorations"]
+[node name="LeftPortal" type="TextureRect" parent="Decorations" unique_id=1994104957]
 process_mode = 3
 material = SubResource("ShaderMaterial_4y8ja")
 layout_mode = 1
@@ -186,7 +186,7 @@ scale = Vector2(3.2728233, 3.2728233)
 texture = ExtResource("8_wdqet")
 stretch_mode = 4
 
-[node name="RightTopPortal" type="TextureRect" parent="Decorations"]
+[node name="RightTopPortal" type="TextureRect" parent="Decorations" unique_id=1655821791]
 material = SubResource("ShaderMaterial_4y8ja")
 layout_mode = 1
 anchors_preset = 1
@@ -202,7 +202,7 @@ scale = Vector2(1.9774169, 1.9774169)
 texture = ExtResource("8_wdqet")
 stretch_mode = 4
 
-[node name="RightBottomPortal" type="TextureRect" parent="Decorations"]
+[node name="RightBottomPortal" type="TextureRect" parent="Decorations" unique_id=806942543]
 material = SubResource("ShaderMaterial_4y8ja")
 layout_mode = 1
 anchors_preset = 3
@@ -221,7 +221,7 @@ scale = Vector2(3.712524, 3.712524)
 texture = ExtResource("8_wdqet")
 stretch_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1588016067]
 offset_left = 31.999939
 offset_top = 464.99997
 offset_right = 159.99994

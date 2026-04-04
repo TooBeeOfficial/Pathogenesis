@@ -97,6 +97,7 @@ func IncrementPortalSpawnPercent(amount):
 		portalSpawnPercent = portalSpawnPercent - 100
 		# initialize new pawning location and its initial position range
 		var newLocation = Location.instantiate()
+		#print_debug(LocationSpawnRadius)
 		var newPosition = Vector2(randi_range(-LocationSpawnRadius,LocationSpawnRadius), randi_range(-LocationSpawnRadius,LocationSpawnRadius))
 		# Spawn LocationMinSapwnDistance away from player characters current position
 		if abs(newPosition.x) < LocationMinSapwnDistance:
@@ -107,6 +108,7 @@ func IncrementPortalSpawnPercent(amount):
 		# instead of root scene
 		newPosition += global_position
 		newLocation.global_position = newPosition
+		# SignalManager.generateNewMap.emit(MapGenerationSettings.mapList[MapGenerationSettings.mapNameList[1]])
 		call_deferred("add_sibling", newLocation)
 		OpenBuffMenu.emit(false)
 
@@ -153,6 +155,11 @@ func _physics_process(delta: float) -> void:
 			#HitAnimationPlayer.play("Shoot")
 			GameSfx.playPlayerShoot()
 			BaseCombat.spawnBullet(BulletSpawnNodeLocation.global_position,true,self)
+	if Input.is_action_just_pressed("Interact"):
+		var overlappingBodies = $InteractableArea.get_overlapping_areas()
+		for portal in overlappingBodies:
+			if portal.get_parent().get_script().get_global_name() == "LocationPortal":
+				portal.get_parent().onPlayerInteract()
 	# > 0 apply shake and slowly fade it out
 	if shakeStrengh > 0:
 		shakeStrengh = lerpf(shakeStrengh,0,shakeFade + delta)

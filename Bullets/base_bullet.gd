@@ -73,7 +73,7 @@ func calcBulletDamage() -> int:
 	return ceil(bulletStats.bulletDamage * bulletStats.bulletDamageMult)
 
 func applyBulletEffects(body):
-	if not body:
+	if body:
 		return
 	for effect in BulletEffects:
 		await effect.applyBulletEffect(body,get_parent().get_tree())

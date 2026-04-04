@@ -13,6 +13,28 @@ func _ready() -> void:
 	newClassicMap(MapGenerationSettings.mapList[MapGenerationSettings.mapNameList[0]])
 
 func newClassicMap(settings:MapGenerationSettings.MapSettings):
+	var spawners = get_tree().get_nodes_in_group("Spawner")
+	#print_debug((spawners as Array).size())
+	for spawner in spawners:
+		spawner.queue_free()
+	
+	var locations = get_tree().get_nodes_in_group("Location")
+	#print_debug((locations as Array).size())
+	for location in locations:
+		location.queue_free()
+	
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	#print_debug((enemies as Array).size())
+	for enemy in enemies:
+		enemy.queue_free()
+	
+	var foods = get_tree().get_nodes_in_group("Enemy")
+	#print_debug((foods as Array).size())
+	for food in foods:
+		food.queue_free()
+	
+	await get_tree().process_frame
+	
 	obstacle_spawner.clearForNewMap()
 	obstacle_spawner.currentMapSettings = settings
 	obstacle_spawner.GenerateAndClean()
@@ -30,16 +52,15 @@ func OnFinishWallPlacement():
 	for foodSpawnerPos in wall_tile_map.getFoodSpawnerPositions():
 		var newFoodSpawner = foodSpawner.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		(newFoodSpawner as FoodSpawner).global_position = foodSpawnerPos
-		add_sibling.call_deferred(newFoodSpawner)
+		add_sibling(newFoodSpawner)
 		# print("Spawned Food Source: ", foodSpawnerPos)
 	
 	for enemySpawnerPos in wall_tile_map.getEnemySpawnerPositions():
 		var newEnemySpawner = enemySpawner.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		(newEnemySpawner as EnemySpawner).global_position = enemySpawnerPos
 		(newEnemySpawner as EnemySpawner).setWave(wave)
-		add_sibling.call_deferred(newEnemySpawner)
+		add_sibling(newEnemySpawner)
 		# print("Spawned Enemy Base: ", enemySpawnerPos)
-	
 	increaseWave()
 
 func increaseWave():

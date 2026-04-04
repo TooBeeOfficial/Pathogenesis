@@ -28,6 +28,7 @@ func clearForNewMap():
 
 func GenerateAndClean():
 	initializeNoiseParametres(currentMapSettings)
+	NoiseGenerator.seed = absi(randi())
 	generateNoise()
 	CloseOutMap()
 	keep_biggest_island()

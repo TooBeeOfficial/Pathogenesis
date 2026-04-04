@@ -9,7 +9,7 @@ radius = 50.01
 [sub_resource type="CircleShape2D" id="CircleShape2D_u7cdh"]
 radius = 472.00107
 
-[node name="EnemySpawner" type="StaticBody2D" unique_id=1351925239]
+[node name="EnemySpawner" type="StaticBody2D" unique_id=1351925239 groups=["Spawner"]]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_4l853")

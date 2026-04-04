@@ -21,6 +21,7 @@ func clearForNewMap(newObstacleMap:PackedColorArray):
 	foodSpawnLocations.clear()
 	enemySpawnerLocations.clear()
 	playableArea = 0
+	clear()
 
 func PlaceTiles(newPlayableArea:int, newObstacleMap:PackedColorArray):
 	clearForNewMap(newObstacleMap)
@@ -37,7 +38,7 @@ func PlaceTiles(newPlayableArea:int, newObstacleMap:PackedColorArray):
 			yCoordinate += 1
 			xCoordinate -= size.x
 	set_cells_terrain_connect(cells,0,0)
-	update_internals()
+	call_deferred("update_internals")
 	setPlayerSpawnLocation()
 	setFoodSpawnerLocations()
 	setEnemySpawnerLocations()

@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Food
 # default amount used to charge portal
-var portalFuelmount:int = 5
+var portalFuelmount:int = 500
 var isEaten = false
 var finalPosition:Vector2 = Vector2.ZERO
 @export var duration: float = .5
@@ -34,7 +34,6 @@ func OnBodyEneter(body: Node) -> void:
 		body.IncrementPortalSpawnPercent(portalFuelmount)
 		FoodOnEatCPU_Particle.emitting = true
 		isEaten = true;
-		
 	if isEaten == true:
 		SignalManager.updateScore.emit(portalFuelmount * 5)
 		await get_tree().create_timer(FoodOnEatCPU_Particle.lifetime+.05).timeout

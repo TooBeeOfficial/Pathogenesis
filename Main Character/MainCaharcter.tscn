@@ -89,6 +89,9 @@ shader = ExtResource("7_mt886")
 shader_parameter/active = false
 shader_parameter/Tint = Vector3(1, 0, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqfi1"]
+radius = 33.23853
+
 [node name="Player" type="CharacterBody2D" unique_id=286977617 groups=["Player"]]
 z_index = 1
 scale = Vector2(2.5, 2.5)
@@ -200,5 +203,10 @@ drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=586498641]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1533382095]
+shape = SubResource("CircleShape2D_rqfi1")
 
 [connection signal="timeout" from="EyeFrames" to="." method="EyeFrameEnd"]

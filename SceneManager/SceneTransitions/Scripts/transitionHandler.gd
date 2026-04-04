@@ -20,7 +20,7 @@ func startSceneTransition(animationInName:String):
 func endSceneTransition():
 	if transitionTimer:
 		transitionTimer.stop()
-	
+	ScreenIsCovered()
 	var animationTransitionOutName = animationTransitionInName.replace("in","out")
 	if !sceneAnimationPlayer.has_animation(animationTransitionOutName):
 		push_warning("'%s' animation does not exist" % animationTransitionOutName)
