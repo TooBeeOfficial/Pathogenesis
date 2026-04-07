@@ -16,8 +16,8 @@ func PhysicsUpdate(_delta: float) -> void:
 	if attachedEnemy.BaseCombat.shoot_cooldown > 0:
 		attachedEnemy.BaseCombat.shoot_cooldown -= _delta
 	else:
-		var bulletSpawnLocation = attachedEnemy.BulletSpawnLocation.global_position
-		attachedEnemy.BaseCombat.spawnBullet(bulletSpawnLocation,false,attachedEnemy)
+		var bulletSpawnLocation = attachedEnemy.BulletSpawnLocation
+		attachedEnemy.BaseCombat.spawnBullet(bulletSpawnLocation.global_position,false,bulletSpawnLocation)
 	pass
 
 func Update(_delta: float) -> void:

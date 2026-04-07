@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bggy2g423883a"]
+[gd_scene format=3 uid="uid://bggy2g423883a"]
 
 [ext_resource type="Script" uid="uid://lm2l18r58s3b" path="res://Bullets/base_bullet.gd" id="1_yd5oh"]
 [ext_resource type="Script" uid="uid://10o2kb6d4rk3" path="res://CommonFunctions/BaseScripts/BaseBulletStats.gd" id="2_hwoe1"]
@@ -16,7 +16,7 @@ radius = 88.0511
 [sub_resource type="CircleShape2D" id="CircleShape2D_67lqb"]
 radius = 20.0
 
-[node name="BaseBullet" type="CharacterBody2D"]
+[node name="BaseBullet" type="CharacterBody2D" unique_id=2114877583]
 collision_layer = 4
 collision_mask = 18
 floor_max_angle = 3.1415927
@@ -24,25 +24,25 @@ safe_margin = 0.001
 script = ExtResource("1_yd5oh")
 bulletStats = SubResource("Resource_x66t2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1562667506]
 position = Vector2(4.7683716e-07, 0.09351969)
 rotation = 0.785398
 scale = Vector2(0.3506317, 0.3506317)
 texture = ExtResource("4_67lqb")
 offset = Vector2(-2.3841858e-07, -2.3841858e-07)
 
-[node name="TrackingRange" type="Area2D" parent="."]
+[node name="TrackingRange" type="Area2D" parent="." unique_id=404596178]
 collision_layer = 0
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackingRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackingRange" unique_id=1424478921]
 shape = SubResource("CircleShape2D_hwoe1")
 
-[node name="LifeSpan" type="Timer" parent="."]
+[node name="LifeSpan" type="Timer" parent="." unique_id=1535424630]
 one_shot = true
 ignore_time_scale = true
 
-[node name="BulletHitParticle" type="CPUParticles2D" parent="."]
+[node name="BulletHitParticle" type="CPUParticles2D" parent="." unique_id=888778130]
 scale = Vector2(0.8808873, 0.8808873)
 emitting = false
 amount = 15
@@ -66,7 +66,7 @@ scale_amount_min = 0.1
 scale_amount_max = 0.2
 color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=39564998]
 shape = SubResource("CircleShape2D_67lqb")
 
 [connection signal="body_entered" from="TrackingRange" to="." method="OnBodyEnteredTrackingRange"]

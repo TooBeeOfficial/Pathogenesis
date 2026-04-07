@@ -49,8 +49,7 @@ func TakeDamage(amount: int, character:Node2D):
 		if health <= 0:
 			character.OnDeath()
 
-func spawnBullet(bulletSpawnLocation:Vector2,isPlayer,spawnNode: Node2D):
-	
+func spawnBullet(bulletSpawnLocation:Vector2,isPlayer,spawnNode: Node2D,ifEnemy = null):
 	var bullet = bulletScene.duplicate_deep(Resource.DEEP_DUPLICATE_ALL).instantiate()
 	var bulletAsBaseBullet = (bullet as BaseBullet)
 	
@@ -60,8 +59,9 @@ func spawnBullet(bulletSpawnLocation:Vector2,isPlayer,spawnNode: Node2D):
 		# Seperate Player item uprades from BulletEffect upgrades
 		upgrade.applyItemEffect(bulletAsBaseBullet)
 	bulletAsBaseBullet.isPlayer = isPlayer
-	
-	spawnNode.add_sibling(bulletAsBaseBullet)
+	if ifEnemy:
+		bulletAsBaseBullet.parentsPosition = ifEnemy
+	spawnNode.get_parent().add_sibling(bulletAsBaseBullet)
 	bulletAsBaseBullet.global_position = bulletSpawnLocation
 	# used for collision detection
 	# does not collide with the firing character

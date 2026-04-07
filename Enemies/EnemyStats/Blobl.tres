@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyCombatFunctionality" load_steps=4 format=3 uid="uid://dtqp0f8uo5byh"]
+[gd_resource type="Resource" script_class="EnemyCombatFunctionality" format=3 uid="uid://dtqp0f8uo5byh"]
 
 [ext_resource type="PackedScene" uid="uid://bggy2g423883a" path="res://Bullets/BaseBullet.tscn" id="1_jd3hy"]
 [ext_resource type="Script" uid="uid://c4q1k4wmt0b25" path="res://Enemies/EnemyScripts/EnemyCombatunctionality.gd" id="1_kycqk"]
@@ -8,10 +8,10 @@
 script = ExtResource("1_kycqk")
 contactDamage = 15
 canEnemyShoot = true
-EnemySpawnWave = 10
 MaxHealth = 200.0
 speed = 140.0
 fireRate = 0.5
 health = 200.0
+shoot_cooldown = 2.0
 bulletScene = ExtResource("1_jd3hy")
 metadata/_custom_type_script = "uid://c4q1k4wmt0b25"

@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Food
 # default amount used to charge portal
-var portalFuelmount:int = 500
+var portalFuelmount:int = 5
 var isEaten = false
 var finalPosition:Vector2 = Vector2.ZERO
 @export var duration: float = .5

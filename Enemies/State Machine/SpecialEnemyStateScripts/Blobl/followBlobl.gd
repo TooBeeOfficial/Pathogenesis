@@ -1,7 +1,5 @@
-extends BaseState
-class_name EnemyFolow
+extends EnemyFolow
 
-var playerLastSeen
 func EnterState():
 	super.EnterState()
 	playerLastSeen = Vector2()
@@ -19,16 +17,21 @@ func PhysicsUpdate(_delta: float) -> void:
 		attachedEnemy.OnCollision(collided.get_collider())
 	var direction = player.global_position - attachedEnemy.global_position
 	if direction.length() < 350:
-		attachedEnemy.velocity = direction.normalized() * attachedEnemy.BaseCombat.speed/2
+		attachedEnemy.velocity = direction.normalized() * attachedEnemy.BaseCombat.speed
 		
 		if attachedEnemy.velocity.length() > .1:
 			attachedEnemy.rotation = lerp_angle(attachedEnemy.rotation, attachedEnemy.velocity.angle(), 0.1)
 		playerLastSeen = player.global_position
-	if attachedEnemy.BaseCombat.canEnemyShoot == true and direction.length() >= 350 and direction.length() <=450 and randi_range(1,100) > 50:
-		TransitionStateSignal.emit($"../SHOOT")
+		
+	if attachedEnemy.BaseCombat.canEnemyShoot == true and direction.length() >= 150 and attachedEnemy.BaseCombat.shoot_cooldown < 0:
+		var bulletSpawnLocation = attachedEnemy.BulletSpawnLocation
+		attachedEnemy.BaseCombat.spawnBullet(bulletSpawnLocation.global_position,false,bulletSpawnLocation,attachedEnemy.global_position)
+		attachedEnemy.BaseCombat.shoot_cooldown = 2
+	else:
+		attachedEnemy.BaseCombat.shoot_cooldown -= _delta
 	# chase player until last seen location
 	# if enemy isn't in view switch to IDLE state
-	if direction.length() > 450:
+	if direction.length() > 600:
 		attachedEnemy.velocity = (playerLastSeen - attachedEnemy.global_position).normalized() * attachedEnemy.BaseCombat.speed
 		if attachedEnemy.velocity.length() > .1:
 			attachedEnemy.rotation = attachedEnemy.velocity.angle()

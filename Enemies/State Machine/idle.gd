@@ -22,10 +22,10 @@ func PhysicsUpdate(_delta: float) -> void:
 	if attachedEnemy:
 		attachedEnemy.velocity = moveDirection * attachedEnemy.BaseCombat.speed / 4
 		attachedEnemy.move_and_slide()
-
+	
 		if attachedEnemy.velocity.length() > 0.1:
 			attachedEnemy.rotation = attachedEnemy.velocity.angle()
-
+	
 		var direction = player.global_position - attachedEnemy.global_position
 		if direction.length() < 350:
 			TransitionStateSignal.emit($"../FOLLOW")

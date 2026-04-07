@@ -13,6 +13,7 @@ func _ready() -> void:
 	newClassicMap(MapGenerationSettings.mapList[MapGenerationSettings.mapNameList[0]])
 
 func newClassicMap(settings:MapGenerationSettings.MapSettings):
+	# Queue currently spawned entities for emptying map
 	var spawners = get_tree().get_nodes_in_group("Spawner")
 	#print_debug((spawners as Array).size())
 	for spawner in spawners:
@@ -33,12 +34,14 @@ func newClassicMap(settings:MapGenerationSettings.MapSettings):
 	for food in foods:
 		food.queue_free()
 	
+	# wait for the next frame to free every entity before spawning new map
 	await get_tree().process_frame
 	
 	obstacle_spawner.clearForNewMap()
 	obstacle_spawner.currentMapSettings = settings
 	obstacle_spawner.GenerateAndClean()
 
+# spawns map after procedurally generating the noise
 func OnFinishNoise():
 	wall_tile_map.obstacleMap = obstacle_spawner.colors
 	wall_tile_map.size = obstacle_spawner.NoiseSize

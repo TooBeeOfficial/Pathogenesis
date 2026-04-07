@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="EnemyCombatFunctionality" load_steps=3 format=3 uid="uid://1kdae1rddgx6"]
+[gd_resource type="Resource" script_class="EnemyCombatFunctionality" format=3 uid="uid://1kdae1rddgx6"]
 
 [ext_resource type="PackedScene" uid="uid://bggy2g423883a" path="res://Bullets/BaseBullet.tscn" id="1_8hle5"]
 [ext_resource type="Script" uid="uid://c4q1k4wmt0b25" path="res://Enemies/EnemyScripts/EnemyCombatunctionality.gd" id="1_rd5hk"]
+[ext_resource type="Script" uid="uid://2o1g4i5r3s4r" path="res://Items/Default/PlayerBuff.gd" id="2_aau25"]
 
 [resource]
 script = ExtResource("1_rd5hk")
 contactDamage = 3
-MaxHealth = 7.0
-speed = 250.0
+MaxHealth = 10.0
+speed = 450.0
 fireRate = 0.001
-health = 7.0
+health = 10.0
 bulletScene = ExtResource("1_8hle5")
 metadata/_custom_type_script = "uid://c4q1k4wmt0b25"

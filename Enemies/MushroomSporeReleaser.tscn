@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxy8vnjv6b7se"]
+[gd_scene format=3 uid="uid://cxy8vnjv6b7se"]
 
 [ext_resource type="Script" uid="uid://dw7dxchgeinrj" path="res://Enemies/EnemyScripts/SporeEnemy.gd" id="1_q4nwi"]
 [ext_resource type="Shader" uid="uid://b5ysqcid2ofsy" path="res://Shaders/MushroomSporeReleaser.gdshader" id="2_dtxj0"]
@@ -29,25 +29,24 @@ _limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="MushroomSporeReleaser" type="Node2D"]
+[node name="MushroomSporeReleaser" type="Node2D" unique_id=210038519]
 script = ExtResource("1_q4nwi")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1082294048]
 material = SubResource("ShaderMaterial_ej3wy")
 position = Vector2(0, 4.76837e-07)
 rotation = -0.188032
 texture = ExtResource("3_rkgx4")
 offset = Vector2(6.82383, -5.26878)
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
+[node name="Area2D" type="Area2D" parent="." unique_id=1977219067]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1611288439]
 position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_cf6ir")
 disabled = true
 
-[node name="AttackParticle" type="CPUParticles2D" parent="."]
+[node name="AttackParticle" type="CPUParticles2D" parent="." unique_id=765831068]
 material = SubResource("CanvasItemMaterial_tl5o3")
 position = Vector2(0, -10)
 emitting = false
@@ -76,7 +75,7 @@ hue_variation_min = 0.97
 hue_variation_max = 0.97
 anim_speed_max = 1.0
 
-[node name="ShootCooldown" type="Timer" parent="."]
+[node name="ShootCooldown" type="Timer" parent="." unique_id=924339763]
 wait_time = 5.0
 autostart = true
 

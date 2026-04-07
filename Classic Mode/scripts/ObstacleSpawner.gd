@@ -54,6 +54,7 @@ func generateNoise():
 				colors[i] = Color.WHITE
 			i += 1
 
+# Used to get empty cells to adjust spawner ratios for map
 func getPlayableArea():
 	var tempSize = 0
 	for cell in colors:
@@ -76,7 +77,6 @@ func flood_fill(start: int) -> Array:
 			var n = p + d
 			if n.x < 0 or n.y < 0 or n.x >= NoiseSize.x or n.y >= NoiseSize.y:
 				continue
-			
 			var ni = to_index(n.x, n.y)
 			if colors[ni] == Color.BLACK and visited[ni] == 0:
 				stack.append(ni)

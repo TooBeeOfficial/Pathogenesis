@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CombatFunctionality" load_steps=4 format=3 uid="uid://b81chlonrjrww"]
+[gd_resource type="Resource" script_class="CombatFunctionality" format=3 uid="uid://b81chlonrjrww"]
 
 [ext_resource type="Script" uid="uid://d2ddvfprbyrqv" path="res://CommonFunctions/BaseScripts/BaseCombotFunctionality.gd" id="1_f3x0u"]
 [ext_resource type="PackedScene" uid="uid://bggy2g423883a" path="res://Bullets/BaseBullet.tscn" id="1_p62ba"]

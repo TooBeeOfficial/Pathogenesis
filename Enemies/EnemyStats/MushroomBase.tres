@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyCombatFunctionality" load_steps=4 format=3 uid="uid://meil430hrdqo"]
+[gd_resource type="Resource" script_class="EnemyCombatFunctionality" format=3 uid="uid://meil430hrdqo"]
 
 [ext_resource type="PackedScene" uid="uid://bggy2g423883a" path="res://Bullets/BaseBullet.tscn" id="1_alj6e"]
 [ext_resource type="Script" uid="uid://c4q1k4wmt0b25" path="res://Enemies/EnemyScripts/EnemyCombatunctionality.gd" id="1_db18f"]
@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_db18f")
 MaxHealth = 25.0
+speed = 350.0
 fireRate = 0.001
 health = 25.0
 bulletScene = ExtResource("1_alj6e")

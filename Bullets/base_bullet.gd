@@ -18,6 +18,7 @@ var StopColliding = false
 @onready var BaseBulletDurationTimer := $LifeSpan
 @onready var BaseBulletTrackingRange := $TrackingRange
 @onready var BulletHitParticle := $BulletHitParticle
+@export var parentsPosition:Vector2
 
 func _ready() -> void:
 	initBullet()
@@ -35,7 +36,11 @@ func initBullet():
 		velocity = newRotation.normalized() * bulletStats.bulletSpeed * bulletStats.bulletSpeedMult
 	elif isPlayer == false:
 		look_at((player as Player).global_position)
-		newRotation = Vector2.RIGHT.rotated(global_rotation)
+		if parentsPosition:
+			var dirToPlayer = (player as Player).global_position - parentsPosition
+			newRotation = Vector2.RIGHT.rotated(dirToPlayer.angle())
+		else:
+			newRotation = Vector2.RIGHT.rotated((player as Player).global_rotation)
 		velocity = newRotation.normalized() * bulletStats.bulletSpeed * bulletStats.bulletSpeedMult
 	BaseBulletDurationTimer.wait_time = bulletStats.BulletLifeSpan
 	BaseBulletDurationTimer.start()
@@ -117,7 +122,7 @@ func bulletCollided(body: Node) -> void:
 	return
 
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(velocity.normalized() * bulletStats.bulletSpeed  * bulletStats.bulletSpeedMult* delta)
+	var collision = move_and_collide(velocity.normalized() * bulletStats.bulletSpeed  * bulletStats.bulletSpeedMult * delta)
 	if collision != null:
 		bulletCollided(collision.get_collider())
 	# always go forward
